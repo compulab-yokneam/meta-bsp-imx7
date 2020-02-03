@@ -1,0 +1,24 @@
+#!/bin/bash
+
+function conf() {
+awk '(/mtd1/)&&($0="/dev/mtd1\t0x0000\t0x2000\t0x"$3)' /proc/mtd > /etc/fw_env.config
+}
+
+conf
+
+select_string="dvi1280x720 dvi1280x1024 dvi1920x1080 dvi1024x768 exit"
+eval $(fw_printenv displaytype)
+PS3="[ Current mode: $displaytype ] Select a videomode (Ctrl^C -- exit): "
+
+select i in $select_string
+do
+	[[ -z $i ]] && continue
+	case $i in
+	dvi*)
+	fw_setenv displaytype $i
+	;&
+	exit)
+	break
+	;;
+	esac
+done
