@@ -36,6 +36,7 @@ mod_local() {
 CORE_IMAGE_EXTRA_INSTALL+=" dhcp-client rng-tools "
 CORE_IMAGE_EXTRA_INSTALL+=" cl-uboot cl-deploy cl-camera "
 CORE_IMAGE_EXTRA_INSTALL+=" memtester htop iotop tmux iperf3 "
+CORE_IMAGE_EXTRA_INSTALL+=" bt-start video-mode "
 IMAGE_FEATURES+=" package-management ssh-server-openssh "
 cat << eof | tee -a ${LOCAL_CONF} > /dev/null
 CORE_IMAGE_EXTRA_INSTALL += "${CORE_IMAGE_EXTRA_INSTALL}"
