@@ -1,0 +1,68 @@
+#!/bin/bash
+
+### BEGIN INIT INFO
+# Provides:		bt-start
+# Required-Start:	$bluetooth
+# Required-Stop:	$bluetooth
+# Default-Start:	2 3 4 5
+# Default-Stop:
+# Short-Description:	CompuLab bt-start
+### END INIT INFO
+
+TTY=ttymxc2
+REGULATOR=/sys/bus/platform/devices/reg-userspace-consumer.0/state
+PIDFile=/var/run/bt-start.pid
+
+bluetooth_kill() {
+	[[ -f ${PIDFile} ]] &&  kill -9 $(cat ${PIDFile})
+	rm -rf ${PIDFile}
+}
+
+bluetooth_stop() {
+	if [[ ! -d  /sys/class/tty/${TTY}/hci0 ]]
+	then
+cat << eom
+	The Device already stopped.
+	Exiting ....
+eom
+	exit 0
+	fi
+	bluetooth_kill
+}
+
+bluetooth_start() {
+if [[ -d  /sys/class/tty/${TTY}/hci0 ]]
+	then
+cat << eom
+	The Device already started.
+	Exiting ....
+eom
+	exit 0
+fi
+
+	rfkill unblock bluetooth
+	echo "disabled" > ${REGULATOR}
+	sleep 3;
+
+	echo "enabled" > ${REGULATOR}
+	sleep 3;
+
+	hciattach -n /dev/${TTY} texas flow &
+	echo $! > ${PIDFile}
+}
+
+case "$1" in
+start)
+	bluetooth_start
+	;;
+stop)
+	bluetooth_stop
+	;;
+*)
+cat << eom
+	Usage: $0 {start|stop}
+eom
+	exit 1
+esac
+
+exit 0
