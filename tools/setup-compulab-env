@@ -18,13 +18,22 @@ url="https://github.com/compulab-yokneam/meta-compulab"
 get_meta ${url} ${branch} ${dir}
 }
 
+get_meta_compulab_bsp() {
+dir="../sources/meta-compulab-bsp"
+branch="-b master"
+url="https://github.com/compulab-yokneam/meta-compulab-bsp"
+get_meta ${url} ${branch} ${dir}
+}
+
 mod_bblayer() {
 # Get CompuLab Main meta layer
 get_meta_compulab
+get_meta_compulab_bsp
 # A mandatory bsp layer: kernel, u-boot, imx-boot
 cat << eof | tee -a ${BBLAYERS_CONF} > /dev/null
 BBLAYERS += " \\
 	\${BSPDIR}/sources/meta-compulab \\
+	\${BSPDIR}/sources/meta-compulab-bsp/meta-bsp \\
 	\${BSPDIR}/sources/meta-bsp-imx7 \\
 	\${BSPDIR}/sources/meta-openembedded/meta-xfce \\
 "
@@ -36,11 +45,13 @@ mod_local() {
 CORE_IMAGE_EXTRA_INSTALL+=" dhcp-client rng-tools "
 CORE_IMAGE_EXTRA_INSTALL+=" cl-uboot cl-deploy cl-camera "
 CORE_IMAGE_EXTRA_INSTALL+=" memtester htop iotop tmux iperf3 "
+CORE_IMAGE_EXTRA_INSTALL+=" bt-start video-mode "
 IMAGE_FEATURES+=" package-management ssh-server-openssh "
 cat << eof | tee -a ${LOCAL_CONF} > /dev/null
 CORE_IMAGE_EXTRA_INSTALL += "${CORE_IMAGE_EXTRA_INSTALL}"
 IMAGE_FEATURES += "${IMAGE_FEATURES}"
 LICENSE_FLAGS_WHITELIST = "commercial"
+DISTRO_FEATURES_append = " polkit"
 eof
 }
 

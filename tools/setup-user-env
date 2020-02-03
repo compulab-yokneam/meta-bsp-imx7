@@ -22,7 +22,44 @@ EOF
 fi
 }
 
-declare -A ARRAYNAME=( [firefox]="no" [rootfs]="rw" )
+calc_image_size() {
+local image_size=${1:-2}
+
+image_size=$(( ${image_size} << 10 ))
+image_size=$(( $(( ${image_size} - 12 )) << 10 ))
+
+cat << EOF >> ${user_local_conf}
+IMAGE_ROOTFS_SIZE = "${image_size}"
+IMAGE_OVERHEAD_FACTOR = "1.0"
+EOF
+}
+
+get_image_size() {
+select_string="4 8 16"
+PS3="Select an image size in GB (Ctrl^C -- exit): "
+
+select i in $select_string
+do
+	[[ -z $i ]] && continue
+	case $i in
+	*)
+	calc_image_size $i
+	;&
+	exit)
+	break
+	;;
+	esac
+done
+}
+
+set_image_size=( yes no )
+cfg_set_image_size() {
+if [[ $1 == "yes" ]];then
+get_image_size
+fi
+}
+
+declare -A ARRAYNAME=( [firefox]="no" [rootfs]="rw" [set_image_size]="no" )
 
 cat << EOF
 --- Users' Configurations started ---
