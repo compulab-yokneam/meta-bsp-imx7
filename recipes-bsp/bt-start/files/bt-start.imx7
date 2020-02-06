@@ -40,7 +40,7 @@ eom
 	exit 0
 fi
 
-	rfkill unblock bluetooth
+	rfkill unblock all
 	echo "disabled" > ${REGULATOR}
 	sleep 3;
 
