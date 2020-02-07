@@ -59,7 +59,16 @@ get_image_size
 fi
 }
 
-declare -A ARRAYNAME=( [firefox]="no" [rootfs]="rw" [set_image_size]="no" )
+kernel=( 4.14.98 4.19.35 )
+cfg_kernel() {
+if [[ $1 == "4.14.98" ]];then
+cat << EOF >> ${user_local_conf}
+PREFERRED_VERSION_linux-compulab = "$1"
+EOF
+fi
+}
+
+declare -A ARRAYNAME=( [firefox]="no" [rootfs]="rw" [set_image_size]="no" [kernel]="4.19.35" )
 
 cat << EOF
 --- Users' Configurations started ---
