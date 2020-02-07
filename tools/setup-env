@@ -1,5 +1,6 @@
 MACHINE=${MACHINE:-cl-som-imx7}
 DISTRO=${DISTRO:-fsl-imx-xwayland}
+PACKAGE_CLASSES=${PACKAGE_CLASSES:-package_deb}
 EULA=1
 
 . fsl-setup-release.sh $@
