@@ -1,16 +1,18 @@
 # Quick Start Guide
 
+NOTE: `This is not an official CompuLab release yet; it is just a development version for Yocto Warrior.`
+
 # Supported CompuLab Machines
 * `cl-som-imx7`
 
 # Prepare NXP BSP
 [source,console]
-repo init -u git://source.codeaurora.org/external/imx/imx-manifest.git -b imx-linux-sumo -m imx-4.14.98-2.0.0_ga.xml
+repo init -u git://source.codeaurora.org/external/imx/imx-manifest.git -b imx-linux-warrior -m imx-4.19.35-1.1.0.xml
 repo sync
 
 # Download CompuLab meta layer
 [source,console]
-git clone -b master https://github.com/compulab-yokneam/meta-bsp-imx7.git sources/meta-bsp-imx7/
+git clone -b devel-warrior https://github.com/compulab-yokneam/meta-bsp-imx7.git sources/meta-bsp-imx7/
 
 # Set a desire machine
 * `cl-som-imx7`
@@ -18,7 +20,7 @@ git clone -b master https://github.com/compulab-yokneam/meta-bsp-imx7.git source
 COMPULAB_MACHINE=cl-som-imx7
 
 # Build Images
-Refer to the http://source.codeaurora.org/external/imx/meta-fsl-bsp-release/tree/imx/README?h=sumo-4.14.98-2.0.0_ga[`NXP Readme`] for details about how to select a correct `backend` & `distro`.
+Refer to the https://source.codeaurora.org/external/imx/meta-fsl-bsp-release/tree/imx/README?h=warrior-4.19.35-1.1.0[`NXP Readme`] for details about how to select a correct `backend` & `distro`.
 
 * Minimal core image
 [source,console]
