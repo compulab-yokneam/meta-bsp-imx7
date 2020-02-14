@@ -47,6 +47,27 @@ bitbake -k fsl-image-qt5-validation-imx
 MACHINE=${COMPULAB_MACHINE} DISTRO=fsl-imx-x11 source sources/meta-bsp-imx7/tools/setup-env -b build-x11-imx7
 bitbake -k compulab-image-xfce
 
+# Build results
+* The results of the build can be found at `${BUILDDIR}/tmp/deploy/images/${COMPULAB_MACHINE}`
+[source,console]
+ls -ltr ${BUILDDIR}/tmp/deploy/images/${COMPULAB_MACHINE}
+
+* Images files
+SD-card images files compressed by `xz` and can be listed this way:
+[source,console]
+ls -ltr ${BUILDDIR}/tmp/deploy/images/${COMPULAB_MACHINE}/*.sdcard.*
+# Sample output
+tmp/deploy/images/cl-som-imx7/compulab-image-cl-som-imx7-20200207133104.rootfs.sdcard.xz
+tmp/deploy/images/cl-som-imx7/compulab-image-cl-som-imx7.sdcard.xz              
+tmp/deploy/images/cl-som-imx7/compulab-image-xfce-cl-som-imx7-20200209074426.rootfs.sdcard.xz
+tmp/deploy/images/cl-som-imx7/compulab-image-xfce-cl-som-imx7.sdcard.xz         
+tmp/deploy/images/cl-som-imx7/core-image-full-cmdline-cl-som-imx7-20200207181732.rootfs.sdcard.xz
+tmp/deploy/images/cl-som-imx7/core-image-full-cmdline-cl-som-imx7.sdcard.xz        
+tmp/deploy/images/cl-som-imx7/core-image-minimal-cl-som-imx7-20200204152232.rootfs.sdcard.xz
+tmp/deploy/images/cl-som-imx7/core-image-minimal-cl-som-imx7.sdcard.xz          
+tmp/deploy/images/cl-som-imx7/fsl-image-qt5-validation-imx-cl-som-imx7-20200208212733.rootfs.sdcard.xz
+tmp/deploy/images/cl-som-imx7/fsl-image-qt5-validation-imx-cl-som-imx7.sdcard.xz
+
 # Device Trees and available features
 ## sbc-imx7
 * imx7d-sbc-imx7.dtb -- U-Boot default
