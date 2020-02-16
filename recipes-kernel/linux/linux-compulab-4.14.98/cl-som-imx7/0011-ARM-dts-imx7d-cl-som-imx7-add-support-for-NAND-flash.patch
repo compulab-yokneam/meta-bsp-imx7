@@ -1,7 +1,7 @@
 From a5915b45bb5d4899ede1b6d512f2836738e77e77 Mon Sep 17 00:00:00 2001
 From: Ilya Ledvich <ilya@compulab.co.il>
 Date: Thu, 11 Feb 2016 13:02:36 +0200
-Subject: [PATCH 11/40] ARM: dts: imx7d: cl-som-imx7: add support for NAND
+Subject: [PATCH 11/44] ARM: dts: imx7d: cl-som-imx7: add support for NAND
  flash
 
 Add support for NAND flash on GPMI interface.

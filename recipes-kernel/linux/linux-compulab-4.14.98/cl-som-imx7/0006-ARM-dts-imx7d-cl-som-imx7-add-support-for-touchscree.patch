@@ -1,7 +1,7 @@
 From efb99a75f70d0accffbddde40e0719eb326314cd Mon Sep 17 00:00:00 2001
 From: Ilya Ledvich <ilya@compulab.co.il>
 Date: Tue, 9 Feb 2016 09:54:37 +0200
-Subject: [PATCH 06/40] ARM: dts: imx7d: cl-som-imx7: add support for
+Subject: [PATCH 06/44] ARM: dts: imx7d: cl-som-imx7: add support for
  touchscreen
 
 Add support for ADS7846 touchscreen controller over SPI1 bus.

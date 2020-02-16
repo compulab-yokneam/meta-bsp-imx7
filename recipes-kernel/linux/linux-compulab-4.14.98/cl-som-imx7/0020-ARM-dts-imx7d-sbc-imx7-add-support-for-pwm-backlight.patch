@@ -1,7 +1,7 @@
 From 5182e4b45856a334ee14a070dd7f5b3d79c4385f Mon Sep 17 00:00:00 2001
 From: Ilya Ledvich <ilya@compulab.co.il>
 Date: Fri, 5 Feb 2016 10:44:30 +0200
-Subject: [PATCH 20/40] ARM: dts: imx7d: sbc-imx7: add support for pwm
+Subject: [PATCH 20/44] ARM: dts: imx7d: sbc-imx7: add support for pwm
  backlight
 
 Add support for PWM2 based backlight used for LCD display.

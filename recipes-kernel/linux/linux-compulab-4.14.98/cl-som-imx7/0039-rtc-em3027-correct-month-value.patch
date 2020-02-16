@@ -1,7 +1,7 @@
 From da2cf7535a7d3838939dd6d57222e08595805347 Mon Sep 17 00:00:00 2001
 From: Ilya Ledvich <ilya@compulab.co.il>
 Date: Wed, 30 Oct 2019 14:52:26 +0200
-Subject: [PATCH 39/40] rtc: em3027: correct month value
+Subject: [PATCH 39/44] rtc: em3027: correct month value
 
 The RTC month value is 1-indexed, but the kernel assumes it is 0-indexed.
 This may result in the RTC not rolling over correctly.

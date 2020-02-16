@@ -1,7 +1,7 @@
 From 4dbe4c3badac43f11632d5ac1436724630f584bf Mon Sep 17 00:00:00 2001
 From: Ilya Ledvich <ilya@compulab.co.il>
 Date: Wed, 10 Jul 2019 09:12:33 +0300
-Subject: [PATCH 02/40] ARM: dts: imx7d: cl-som-imx7: fix i2c2 configuration
+Subject: [PATCH 02/44] ARM: dts: imx7d: cl-som-imx7: fix i2c2 configuration
 
 Fix I2C2 pinmux configuration: change pins and move to the
 iomuxc_lpsr node.

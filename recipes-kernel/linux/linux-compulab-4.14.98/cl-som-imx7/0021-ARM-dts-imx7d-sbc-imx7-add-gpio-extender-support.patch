@@ -1,7 +1,7 @@
 From 787366ab0a6cae8fbad9242d425dc9e0e1e8e629 Mon Sep 17 00:00:00 2001
 From: Ilya Ledvich <ilya@compulab.co.il>
 Date: Fri, 5 Feb 2016 10:58:52 +0200
-Subject: [PATCH 21/40] ARM: dts: imx7d: sbc-imx7: add gpio extender support
+Subject: [PATCH 21/44] ARM: dts: imx7d: sbc-imx7: add gpio extender support
 
 Add support for PCA9555 GPIO extender over I2C4 bus.
 
