@@ -17,4 +17,4 @@ do_install_prepend_cl-som-imx7() {
 }
 
 SYSTEMD_SERVICE_${PN} = "bt-start.service"
-RDEPENDS_${PN} += "rfkill"
+RDEPENDS_${PN} += "rfkill bluez5"
