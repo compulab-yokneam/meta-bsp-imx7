@@ -1,0 +1,27 @@
+From 9daaa5a2c0d90b5ee368db9e397d832c9d6c7ed6 Mon Sep 17 00:00:00 2001
+From: Ilya Ledvich <ilya@compulab.co.il>
+Date: Sun, 23 Feb 2020 14:16:55 +0200
+Subject: [PATCH 2/2] ARM: configs: compulab_imx7: enable fully preemptible
+ kernel (RT)
+
+Signed-off-by: Ilya Ledvich <ilya@compulab.co.il>
+---
+ arch/arm/configs/compulab_imx7_defconfig | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/arch/arm/configs/compulab_imx7_defconfig b/arch/arm/configs/compulab_imx7_defconfig
+index 72bb39f8993b..f13e6702ff63 100644
+--- a/arch/arm/configs/compulab_imx7_defconfig
++++ b/arch/arm/configs/compulab_imx7_defconfig
+@@ -37,7 +37,7 @@ CONFIG_PCI_LAYERSCAPE=y
+ CONFIG_SMP=y
+ CONFIG_VMSPLIT_2G=y
+ CONFIG_ARM_PSCI=y
+-CONFIG_PREEMPT=y
++CONFIG_PREEMPT_RT_FULL=y
+ CONFIG_HIGHMEM=y
+ CONFIG_CMA=y
+ CONFIG_CMDLINE="noinitrd console=ttymxc0,115200"
+-- 
+2.20.1
+
