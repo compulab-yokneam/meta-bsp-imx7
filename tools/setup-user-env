@@ -59,7 +59,19 @@ get_image_size
 fi
 }
 
-declare -A ARRAYNAME=( [firefox]="no" [rootfs]="rw" [set_image_size]="no" )
+real_time_linux=( yes no )
+cfg_real_time_linux() {
+if [[ $1 == "yes" ]];then
+cat << EOF >> ${user_local_conf}
+# Use linux-compulab-rt recipe
+PREFERRED_PROVIDER_virtual/kernel_cl-som-imx7 = "linux-compulab-rt"
+# Add rt-tests
+IMAGE_INSTALL_append = " rt-tests "
+EOF
+fi
+}
+
+declare -A ARRAYNAME=( [firefox]="no" [rootfs]="rw" [set_image_size]="no" [real_time_linux]="no" )
 
 cat << EOF
 --- Users' Configurations started ---
