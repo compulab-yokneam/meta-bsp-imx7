@@ -11,13 +11,5 @@ DEFAULT_PREFERENCE = "1"
 
 include linux-compulab-4.14.98/linux-compulab_cl-som-imx7.inc
 
-addtask copy_defconfig after do_patch before do_preconfigure
-do_copy_defconfig () {
-    install -d ${B}
-    mkdir -p ${B}
-    cp ${S}/arch/arm/configs/compulab_imx7_defconfig ${B}/.config
-    cp ${S}/arch/arm/configs/compulab_imx7_defconfig ${B}/../defconfig
-}
-
 COMPATIBLE_MACHINE = "cl-som-imx7"
 # EXTRA_OEMAKE_append_mx7 = " ARCH=arm"

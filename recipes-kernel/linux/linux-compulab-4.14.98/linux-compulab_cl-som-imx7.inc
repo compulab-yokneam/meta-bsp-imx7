@@ -39,6 +39,15 @@ SRC_URI_append_cl-som-imx7 += "\
     file://0038-ARM-dts-imx7d-sbc-imx7-enable-SB-SOM-peripheral.patch \
     file://0039-rtc-em3027-correct-month-value.patch \
     file://0040-ARM-imx7d-release-kernel-v4.14.98-cl-som-imx7-6.0.patch \
-    file://compulab_imx7_defconfig \
+    file://0041-ARM-dts-imx7d-cl-som-imx7-disable-unsupported-operat.patch \
+    file://0042-mtd-tests-nandecctest-add-dummy-module-parameter.patch \
+    file://0043-ARM-configs-update-compulab_imx7_defconfig.patch \
+    file://0044-ARM-imx7d-release-kernel-v4.14.98-cl-som-imx7-6.1.patch \
     file://defconfig \
 "
+
+DEFAULT_DEFCONFIG = "compulab_imx7"
+
+do_configure_append () {
+    oe_runmake ${DEFAULT_DEFCONFIG}_defconfig
+}
