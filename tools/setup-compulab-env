@@ -40,12 +40,17 @@ BBLAYERS += " \\
 eof
 }
 
+mod_packag_classes() {
+sed -i "s/\(PACKAGE_CLASSES\).*/\1 = 'package_deb package_tar'/g" ${LOCAL_CONF}
+}
+
 mod_local() {
 # Modify local.conf
 CORE_IMAGE_EXTRA_INSTALL+=" dhcp-client rng-tools "
 CORE_IMAGE_EXTRA_INSTALL+=" cl-uboot cl-deploy cl-camera cl-stest"
-CORE_IMAGE_EXTRA_INSTALL+=" memtester htop iotop tmux iperf3 "
+CORE_IMAGE_EXTRA_INSTALL+=" memtester htop iotop tmux iperf3 stress-ng "
 CORE_IMAGE_EXTRA_INSTALL+=" bt-start video-mode "
+CORE_IMAGE_EXTRA_INSTALL+=" u-boot-fw-utils "
 CORE_IMAGE_EXTRA_INSTALL+=" kernel-modules"
 CORE_IMAGE_EXTRA_INSTALL+=" firmware-imx-sdma"
 CORE_IMAGE_EXTRA_INSTALL+=" linux-firmware-wl18xx"
@@ -53,15 +58,20 @@ CORE_IMAGE_EXTRA_INSTALL+=" linux-firmware-wlcommon"
 CORE_IMAGE_EXTRA_INSTALL+=" linux-firmware-ti-connectivity-license"
 CORE_IMAGE_EXTRA_INSTALL+=" bluez5"
 CORE_IMAGE_EXTRA_INSTALL+=" wpa-supplicant"
-CORE_IMAGE_EXTRA_INSTALL+=" modemmanager"
 CORE_IMAGE_EXTRA_INSTALL+=" wvdial wvdial-compulab"
-CORE_IMAGE_EXTRA_INSTALL+=" networkmanager"
 IMAGE_FEATURES+=" package-management ssh-server-openssh "
 cat << eof | tee -a ${LOCAL_CONF} > /dev/null
 CORE_IMAGE_EXTRA_INSTALL += "${CORE_IMAGE_EXTRA_INSTALL}"
 IMAGE_FEATURES += "${IMAGE_FEATURES}"
 LICENSE_FLAGS_WHITELIST = "commercial"
 DISTRO_FEATURES_append = " polkit"
+PREFERRED_RPROVIDER_u-boot-fw-utils = "u-boot-fw-utils"
+eof
+CORE_IMAGE_EXTRA_INSTALL=" modemmanager networkmanager "
+cat << eof | tee -a ${LOCAL_CONF} > /dev/null
+# Make it use for core-images only
+# These package cause a root image build conflict with gui images
+# CORE_IMAGE_EXTRA_INSTALL += "${CORE_IMAGE_EXTRA_INSTALL}"
 eof
 }
 
@@ -96,17 +106,6 @@ eom
     ${EXIT} 0
 fi
 
-add_bbmask() {
-declare -a bbmask=('meta-compulab/recipes-xfce' \
-'meta-compulab/recipes-browser')
-
-for i in  ${bbmask[@]}; do
-cat << eof | tee -a ${LOCAL_CONF} > /dev/null
-BBMASK += "${i}"
-eof
-done
-}
-
 eval $(awk '(/MACHINE|DISTRO/)&&(gsub(/'"'"'/,"")&&($0=$1"="$NF))' ORS=";" ${LOCAL_CONF})
 
 if [[ ${SUPPORTED_MACHINE[${MACHINE}]} -ne 1 ]];then
@@ -124,7 +123,7 @@ eom
 mod_bblayer
 # Don't touch the conf/local.conf if The CompuLab Build environment is in use
 [[ -z ${DEVENV} ]] && mod_local
-# add_bbmask
+mod_packag_classes
 
 cat << eom
     Note: Files ${BBLAYERS_CONF} and ${LOCAL_CONF} updated successfully.
