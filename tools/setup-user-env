@@ -13,6 +13,17 @@ EOF
 fi
 }
 
+enable_boot_scr=( yes no )
+cfg_enable_boot_scr() {
+if [[ $1 == "yes" ]];then
+cat << EOF >> ${user_local_conf}
+IMAGE_BOOT_FILES_append = " \\
+    boot.scr-\${MACHINE};boot.scr \\
+"
+EOF
+fi
+}
+
 console_root_autologin=( yes no )
 cfg_console_root_autologin() {
 if [[ $1 == "no" ]];then
@@ -78,7 +89,7 @@ EOF
 fi
 }
 
-declare -A ARRAYNAME=( [firefox]="no" [rootfs]="rw" [set_image_size]="no" [kernel]="4.19.35" [console_root_autologin]="yes" )
+declare -A ARRAYNAME=( [firefox]="no" [rootfs]="rw" [set_image_size]="no" [kernel]="4.19.35" [console_root_autologin]="yes" [enable_boot_scr]="no" )
 
 cat << EOF
 --- Users' Configurations started ---
