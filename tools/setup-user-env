@@ -13,6 +13,16 @@ EOF
 fi
 }
 
+console_root_autologin=( yes no )
+cfg_console_root_autologin() {
+if [[ $1 == "no" ]];then
+cat << EOF >> ${user_local_conf}
+# Disable root autologing on serial
+BBMASK += "systemd-serialgetty.bbappend"
+EOF
+fi
+}
+
 rootfs=( ro rw )
 cfg_rootfs() {
 if [[ $1 == "ro" ]];then
@@ -68,7 +78,7 @@ EOF
 fi
 }
 
-declare -A ARRAYNAME=( [firefox]="no" [rootfs]="rw" [set_image_size]="no" [kernel]="4.19.35" )
+declare -A ARRAYNAME=( [firefox]="no" [rootfs]="rw" [set_image_size]="no" [kernel]="4.19.35" [console_root_autologin]="yes" )
 
 cat << EOF
 --- Users' Configurations started ---
