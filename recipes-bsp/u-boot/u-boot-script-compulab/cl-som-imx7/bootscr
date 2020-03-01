@@ -1,0 +1,54 @@
+setenv setup_ext 'setenv ext debug'
+setenv setup_args 'setenv bootargs console=${console} root=${rootdev} rw rootwait ${ext}'
+setenv load_env 'load ${bootdev} ${bootdev_id} ${env_addr} ${env_file} && env import -t ${env_addr} ${filesize}'
+
+setenv setup_boot 'run load_env; \
+	setenv bootlinux \"\
+	if load ${bootdev} ${bootdev_id} ${loadaddr} ${kernel}; \
+	then; \
+		if load ${bootdev} ${bootdev_id} ${fdtaddr} ${fdtfile}; \
+		then; \
+			run setup_ext; run setup_args; \
+			echo "Booting " ${bootdev}"["${bootdev_id}"]=>"${kernel}":"${fdtfile}; \
+			bootz ${loadaddr} - ${fdtaddr}; \
+		fi; \
+	fi;\"'
+
+setenv usb0 '\
+setenv bootdev usb; \
+setenv bootdev_id 0; \
+setenv rootdev /dev/sda2; \
+if usb start && usb dev ${bootdev_id};\
+then; \
+	run setup_boot; \
+	run bootlinux; \
+fi;\'
+
+setenv mmc '\
+setenv bootdev mmc; \
+setenv bootdev_id 0; \
+setenv rootdev /dev/mmcblk0p2; \
+if mmc dev ${bootdev_id} && mmc rescan; \
+then; \
+	run setup_boot; \
+	run bootlinux; \
+fi;\'
+
+setenv emmc '\
+setenv bootdev mmc; \
+setenv bootdev_id 1; \
+setenv rootdev /dev/mmcblk2p2; \
+if mmc dev ${bootdev_id} && mmc rescan; \
+then; \
+	run setup_boot; \
+	run bootlinux; \
+fi;\'
+
+echo "Continue boot.scr discovery ...."
+
+# Try removable devices first
+run usb0
+run mmc
+run emmc
+
+echo "Invalid boot parameters: kernel ${kernel} fdtfile ${fdtfile} ..."
