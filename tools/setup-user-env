@@ -2,6 +2,7 @@
 
 user_local_conf=$(mktemp --dry-run --tmpdir=/tmp userXXX)
 local_conf="conf/local.conf"
+kernel_recipe="linux-compulab"
 
 firefox=( yes no )
 cfg_firefox() {
@@ -84,12 +85,25 @@ kernel=( 4.14.98 4.19.35 )
 cfg_kernel() {
 if [[ $1 == "4.14.98" ]];then
 cat << EOF >> ${user_local_conf}
-PREFERRED_VERSION_linux-compulab = "$1"
+PREFERRED_VERSION_${kernel_recipe} = "$1"
 EOF
 fi
 }
 
-declare -A ARRAYNAME=( [firefox]="no" [rootfs]="rw" [set_image_size]="no" [kernel]="4.19.35" [console_root_autologin]="yes" [enable_boot_scr]="no" )
+real_time_linux=( yes no )
+cfg_real_time_linux() {
+if [[ $1 == "yes" ]];then
+kernel_recipe="linux-compulab-rt"
+cat << EOF >> ${user_local_conf}
+# Use linux-compulab-rt recipe
+PREFERRED_PROVIDER_virtual/kernel_cl-som-imx7 = "linux-compulab-rt"
+# Add rt-tests
+IMAGE_INSTALL_append = " rt-tests "
+EOF
+fi
+}
+
+declare -A ARRAYNAME=( [firefox]="no" [rootfs]="rw" [set_image_size]="no" [kernel]="4.19.35" [real_time_linux]="no" [console_root_autologin]="yes" [enable_boot_scr]="no" )
 
 cat << EOF
 --- Users' Configurations started ---
