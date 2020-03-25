@@ -1,7 +1,7 @@
-From 308dc4179eb85fe0097a208485bb86e4e4873586 Mon Sep 17 00:00:00 2001
+From 8a3227c04481353937eb4e846571aac6c24eb458 Mon Sep 17 00:00:00 2001
 From: Ilya Ledvich <ilya@compulab.co.il>
 Date: Sun, 11 Feb 2018 14:39:37 +0200
-Subject: [PATCH 2/8] ARM: imx7d: clk: select uart7 clock parent and set rate
+Subject: [PATCH 33/40] ARM: imx7d: clk: select uart7 clock parent and set rate
 
 Signed-off-by: Ilya Ledvich <ilya@compulab.co.il>
 ---
@@ -9,7 +9,7 @@ Signed-off-by: Ilya Ledvich <ilya@compulab.co.il>
  1 file changed, 2 insertions(+)
 
 diff --git a/drivers/clk/imx/clk-imx7d.c b/drivers/clk/imx/clk-imx7d.c
-index b9904f1..c7cb271 100644
+index b9904f1135eb..c7cb2719c786 100644
 --- a/drivers/clk/imx/clk-imx7d.c
 +++ b/drivers/clk/imx/clk-imx7d.c
 @@ -931,6 +931,8 @@ static void __init imx7d_clocks_init(struct device_node *ccm_node)
@@ -22,5 +22,5 @@ index b9904f1..c7cb271 100644
  	imx_register_uart_clocks(uart_clks);
  }
 -- 
-1.9.1
+2.20.1
 

@@ -22,16 +22,5 @@ include compulab/imx7d.inc
 
 FILESEXTRAPATHS_prepend := "${THISDIR}/compulab/imx7d:"
 
-addtask copy_defconfig after do_patch before do_preconfigure
-do_copy_defconfig () {
-    install -d ${B}
-    mkdir -p ${B}
-    cp ${S}/arch/arm/configs/compulab_imx7_defconfig ${B}/.config
-    cp ${S}/arch/arm/configs/compulab_imx7_defconfig ${B}/../defconfig
-}
-
-KERNEL_MODULE_AUTOLOAD += "userspace_consumer"
-KERNEL_MODULE_AUTOLOAD += "userspace_consumer_wrapper"
-
 COMPATIBLE_MACHINE_cl-som-imx7 = "cl-som-imx7"
 # EXTRA_OEMAKE_append_mx7 = " ARCH=arm"

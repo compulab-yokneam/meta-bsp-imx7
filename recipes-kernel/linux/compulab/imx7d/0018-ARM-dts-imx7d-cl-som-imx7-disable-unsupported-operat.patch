@@ -1,0 +1,34 @@
+From 703017f51c6a9c8c8aa1475da40b64dd33ce638c Mon Sep 17 00:00:00 2001
+From: Ilya Ledvich <ilya@compulab.co.il>
+Date: Thu, 2 Jan 2020 17:32:33 +0200
+Subject: [PATCH 18/40] ARM: dts: imx7d: cl-som-imx7: disable unsupported
+ operating point
+
+Disable 'opp-1200000000' node in the 'cpu0_opp_table' as it's not supported by the CPU
+variant used in Compulab devices based on i.MX7 SoC.
+
+Signed-off-by: Ilya Ledvich <ilya@compulab.co.il>
+---
+ arch/arm/boot/dts/imx7d-cl-som-imx7.dts | 6 ++++++
+ 1 file changed, 6 insertions(+)
+
+diff --git a/arch/arm/boot/dts/imx7d-cl-som-imx7.dts b/arch/arm/boot/dts/imx7d-cl-som-imx7.dts
+index 8f8216df560e..6a1b522e2520 100644
+--- a/arch/arm/boot/dts/imx7d-cl-som-imx7.dts
++++ b/arch/arm/boot/dts/imx7d-cl-som-imx7.dts
+@@ -113,6 +113,12 @@
+ 	cpu-supply = <&sw1a_reg>;
+ };
+ 
++&cpu0_opp_table {
++	opp-1200000000 {
++		status = "disabled";
++	};
++};
++
+ &ecspi1 {
+ 	fsl,spi-num-chipselects = <2>;
+ 	pinctrl-names = "default";
+-- 
+2.20.1
+

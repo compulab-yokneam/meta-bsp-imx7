@@ -1,0 +1,70 @@
+From 2665df70c749ed7b7d476cd6435598149de43975 Mon Sep 17 00:00:00 2001
+From: Nikita Kiryanov <nikita@compulab.co.il>
+Date: Wed, 28 Feb 2018 20:10:00 +0200
+Subject: [PATCH 30/40] ARM: dts: imx7d: sbc-imx7: add support for m4
+
+Add device tree settings for sbc-imx7 to support operating FreeRTOS on
+the M4 core alongside Linux.
+
+The rpmsg buffer is placed at the last 64K of 256MB DRAM to be
+compatible with all configurations of sbc-imx7.
+
+Signed-off-by: Nikita Kiryanov <nikita@compulab.co.il>
+---
+ arch/arm/boot/dts/Makefile              |  1 +
+ arch/arm/boot/dts/imx7d-sbc-imx7-m4.dts | 31 +++++++++++++++++++++++++
+ 2 files changed, 32 insertions(+)
+ create mode 100644 arch/arm/boot/dts/imx7d-sbc-imx7-m4.dts
+
+diff --git a/arch/arm/boot/dts/Makefile b/arch/arm/boot/dts/Makefile
+index f701986529d6..d8abc6ccdd2d 100644
+--- a/arch/arm/boot/dts/Makefile
++++ b/arch/arm/boot/dts/Makefile
+@@ -694,6 +694,7 @@ dtb-$(CONFIG_SOC_IMX7D) += \
+ 	imx7d-nitrogen7.dtb \
+ 	imx7d-pico-pi.dtb \
+ 	imx7d-sbc-imx7.dtb \
++	imx7d-sbc-imx7-m4.dtb \
+ 	imx7d-sdb.dtb \
+ 	imx7d-sdb-epdc.dtb \
+ 	imx7d-sdb-gpmi-weim.dtb \
+diff --git a/arch/arm/boot/dts/imx7d-sbc-imx7-m4.dts b/arch/arm/boot/dts/imx7d-sbc-imx7-m4.dts
+new file mode 100644
+index 000000000000..d9f0ca21d28d
+--- /dev/null
++++ b/arch/arm/boot/dts/imx7d-sbc-imx7-m4.dts
+@@ -0,0 +1,31 @@
++#include "imx7d-sbc-imx7.dts"
++
++/ {
++	m4_tcm: tcml@7f8000 {
++		compatible = "fsl, m4_tcml";
++		reg = <0x7f8000 0x8000>;
++	};
++};
++
++&adc1 {
++	status = "disabled";
++};
++
++&adc2 {
++	status = "disabled";
++};
++
++&ocram {
++	reg = <0x901000 0xf000>;
++};
++
++&rpmsg {
++	vdev-nums = <1>;
++	reg = <0xafff0000 0x10000>;
++	status = "okay";
++};
++
++&uart2 {
++	status = "disabled";
++};
++
+-- 
+2.20.1
+

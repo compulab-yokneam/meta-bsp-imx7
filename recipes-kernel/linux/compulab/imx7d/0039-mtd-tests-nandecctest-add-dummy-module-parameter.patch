@@ -1,0 +1,31 @@
+From 48ef5420884f9bcb59dc9b978320746969ba8c47 Mon Sep 17 00:00:00 2001
+From: Ilya Ledvich <ilya@compulab.co.il>
+Date: Thu, 16 Jul 2015 13:58:22 +0300
+Subject: [PATCH 39/40] mtd: tests: nandecctest: add dummy module parameter
+
+Add dummy module parameter "dev" to the nandecctest to work smoothly
+with Compylab NAND test suit.
+
+Signed-off-by: Ilya Ledvich <ilya@compulab.co.il>
+---
+ drivers/mtd/tests/mtd_nandecctest.c | 4 ++++
+ 1 file changed, 4 insertions(+)
+
+diff --git a/drivers/mtd/tests/mtd_nandecctest.c b/drivers/mtd/tests/mtd_nandecctest.c
+index 88b6c81cebbe..d8b6ba917f66 100644
+--- a/drivers/mtd/tests/mtd_nandecctest.c
++++ b/drivers/mtd/tests/mtd_nandecctest.c
+@@ -11,6 +11,10 @@
+ 
+ #include "mtd_test.h"
+ 
++static int dev = -EINVAL;
++module_param(dev, int, S_IRUGO);
++MODULE_PARM_DESC(dev, "MTD device number to use");
++
+ /*
+  * Test the implementation for software ECC
+  *
+-- 
+2.20.1
+

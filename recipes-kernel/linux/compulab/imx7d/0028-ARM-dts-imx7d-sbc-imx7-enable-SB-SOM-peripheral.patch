@@ -1,0 +1,137 @@
+From ac35072f0bdefe4c8bc83a57d7be9c407d736e44 Mon Sep 17 00:00:00 2001
+From: Uri Mashiach <uri.mashiach@compulab.co.il>
+Date: Wed, 16 Jan 2019 09:50:05 +0200
+Subject: [PATCH 28/40] ARM: dts: imx7d: sbc-imx7: enable SB-SOM peripheral
+
+Some of the SOC signals that are routed to connectors P4 and P5 of the
+SB-SOM are not enabled.
+
+Enable the following peripherals:
+ - uart2 (4-pins mode), uart5 (2-pins mode)
+ - i2c3
+ - gpio2_28, gpio2_29, gpio2_30, gpio2_31, gpio3_12, gpio3_13, gpio3_14,
+   gpio3_15, gpio3_16, gpio4_10, gpio4_11 gpio5_2
+
+Signed-off-by: Uri Mashiach <uri.mashiach@compulab.co.il>
+Signed-off-by: Ilya Ledvich <ilya@compulab.co.il>
+---
+ arch/arm/boot/dts/imx7d-sbc-imx7.dts | 68 +++++++++++++++++++++++++++-
+ 1 file changed, 67 insertions(+), 1 deletion(-)
+
+diff --git a/arch/arm/boot/dts/imx7d-sbc-imx7.dts b/arch/arm/boot/dts/imx7d-sbc-imx7.dts
+index d66a597f1b9e..699faeb46d79 100644
+--- a/arch/arm/boot/dts/imx7d-sbc-imx7.dts
++++ b/arch/arm/boot/dts/imx7d-sbc-imx7.dts
+@@ -42,6 +42,13 @@
+ 	status = "okay";
+ };
+ 
++&i2c3 {
++	clock-frequency = <100000>;
++	pinctrl-names = "default";
++	pinctrl-0 = <&pinctrl_i2c3>;
++	status = "okay";
++};
++
+ &i2c4 {
+ 	clock-frequency = <100000>;
+ 	pinctrl-names = "default";
+@@ -80,7 +87,6 @@
+ 		compatible = "sil164";
+ 		reg = <0x39>;
+ 	};
+-
+ };
+ 
+ &lcdif {
+@@ -146,6 +152,23 @@
+ 	status = "okay";
+ };
+ 
++&uart2 {
++	pinctrl-names = "default";
++	pinctrl-0 = <&pinctrl_uart2>;
++	assigned-clocks = <&clks IMX7D_UART2_ROOT_SRC>;
++	assigned-clock-parents = <&clks IMX7D_OSC_24M_CLK>;
++	fsl,uart-has-rtscts;
++	status = "okay";
++};
++
++&uart5 {
++	pinctrl-names = "default";
++	pinctrl-0 = <&pinctrl_uart5>;
++	assigned-clocks = <&clks IMX7D_UART5_ROOT_SRC>;
++	assigned-clock-parents = <&clks IMX7D_PLL_SYS_MAIN_240M_CLK>;
++	status = "okay";
++};
++
+ &usdhc1 {
+ 	pinctrl-names = "default";
+ 	pinctrl-0 = <&pinctrl_usdhc1>;
+@@ -156,6 +179,26 @@
+ };
+ 
+ &iomuxc {
++	pinctrl-names = "default";
++	pinctrl-0 = <&pinctrl_gpios>;
++
++	pinctrl_gpios: gpiosgrp {
++		fsl,pins = <
++			MX7D_PAD_EPDC_BDR0__GPIO2_IO28		0x54 /* P5-18 - gpio60 */
++			MX7D_PAD_EPDC_BDR1__GPIO2_IO29		0x54 /* P4-20 - gpio61 */
++			MX7D_PAD_EPDC_PWR_COM__GPIO2_IO30	0x54 /* P4-10 - gpio62 */
++			MX7D_PAD_EPDC_PWR_STAT__GPIO2_IO31	0x54 /* P5-13 - gpio63 */
++			MX7D_PAD_LCD_DATA07__GPIO3_IO12		0x54 /* P4-08 - gpio76 */
++			MX7D_PAD_LCD_DATA08__GPIO3_IO13		0x54 /* P5-08 - gpio77 */
++			MX7D_PAD_LCD_DATA09__GPIO3_IO14		0x54 /* P5-12 - gpio78 */
++			MX7D_PAD_LCD_DATA10__GPIO3_IO15		0x54 /* P4-14 - gpio79 */
++			MX7D_PAD_LCD_DATA11__GPIO3_IO16		0x54 /* P4-16 - gpio80 */
++			MX7D_PAD_I2C2_SCL__GPIO4_IO10		0x54 /* P4-06 - gpio106 */
++			MX7D_PAD_I2C2_SDA__GPIO4_IO11 		0x54 /* P4-18 - gpio107 */
++			MX7D_PAD_SD1_RESET_B__GPIO5_IO2		0x54 /* P5-02 - gpio130 */
++		>;
++	};
++
+ 	pinctrl_flexcan1: flexcan1grp {
+ 		fsl,pins = <
+ 			MX7D_PAD_I2C1_SCL__FLEXCAN1_RX		0x59
+@@ -170,6 +213,13 @@
+ 		>;
+ 	};
+ 
++	pinctrl_i2c3: i2c3grp {
++		fsl,pins = <
++			MX7D_PAD_GPIO1_IO09__I2C3_SDA		0x4000000f /* P4-23 */
++			MX7D_PAD_GPIO1_IO08__I2C3_SCL 		0x4000000f /* P4-21 */
++		>;
++	};
++
+ 	pinctrl_i2c4: i2c4grp {
+ 		fsl,pins = <
+ 			MX7D_PAD_GPIO1_IO11__I2C4_SDA		0x4000000f
+@@ -215,6 +265,22 @@
+ 		>;
+ 	};
+ 
++	pinctrl_uart2: uart2grp {
++		fsl,pins = <
++			MX7D_PAD_LCD_ENABLE__UART2_DCE_TX	0x79 /* P4-33 */
++			MX7D_PAD_LCD_CLK__UART2_DCE_RX 		0x79 /* P4-31 */
++			MX7D_PAD_LCD_VSYNC__UART2_DCE_CTS	0x79 /* P4-03 */
++			MX7D_PAD_LCD_HSYNC__UART2_DCE_RTS	0x79 /* P4-01 */
++		>;
++	};
++
++	pinctrl_uart5: uart5grp {
++		fsl,pins = <
++			MX7D_PAD_I2C4_SDA__UART5_DCE_TX		0x79 /* P5-15 */
++			MX7D_PAD_I2C4_SCL__UART5_DCE_RX		0x79 /* P5-17 */
++		>;
++	};
++
+ 	pinctrl_usdhc1: usdhc1grp {
+ 		fsl,pins = <
+ 			MX7D_PAD_SD1_CMD__SD1_CMD		0x59
+-- 
+2.20.1
+
