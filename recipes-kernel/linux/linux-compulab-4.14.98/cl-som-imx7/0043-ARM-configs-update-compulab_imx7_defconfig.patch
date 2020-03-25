@@ -1,0 +1,34 @@
+From f2d7f566268fb74f52c64287ddbde45871785748 Mon Sep 17 00:00:00 2001
+From: Ilya Ledvich <ilya@compulab.co.il>
+Date: Thu, 2 Jan 2020 18:17:46 +0200
+Subject: [PATCH 43/44] ARM: configs: update compulab_imx7_defconfig
+
+Signed-off-by: Ilya Ledvich <ilya@compulab.co.il>
+---
+ arch/arm/configs/compulab_imx7_defconfig | 3 ++-
+ 1 file changed, 2 insertions(+), 1 deletion(-)
+
+diff --git a/arch/arm/configs/compulab_imx7_defconfig b/arch/arm/configs/compulab_imx7_defconfig
+index fdf26c9d116f..72bb39f8993b 100644
+--- a/arch/arm/configs/compulab_imx7_defconfig
++++ b/arch/arm/configs/compulab_imx7_defconfig
+@@ -246,6 +246,7 @@ CONFIG_CMA_SIZE_MBYTES=320
+ CONFIG_IMX_WEIM=y
+ CONFIG_CONNECTOR=y
+ CONFIG_MTD=y
++CONFIG_MTD_TESTS=m
+ CONFIG_MTD_CMDLINE_PARTS=y
+ CONFIG_MTD_BLOCK=y
+ CONFIG_MTD_CFI=y
+@@ -360,7 +361,7 @@ CONFIG_MOUSE_PS2_ELANTECH=y
+ CONFIG_INPUT_JOYSTICK=y
+ CONFIG_JOYSTICK_ANALOG=m
+ CONFIG_INPUT_TOUCHSCREEN=y
+-CONFIG_TOUCHSCREEN_ADS7846=m
++CONFIG_TOUCHSCREEN_ADS7846=y
+ # CONFIG_TOUCHSCREEN_CT36X_WLD is not set
+ CONFIG_TOUCHSCREEN_EGALAX=m
+ CONFIG_TOUCHSCREEN_IMX6UL_TSC=y
+-- 
+2.20.1
+

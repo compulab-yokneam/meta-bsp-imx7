@@ -1,7 +1,7 @@
 From c48c39fec98d12f8cc382a96683184b1f22d6aa4 Mon Sep 17 00:00:00 2001
 From: Valentin Raevsky <valentin@compulab.co.il>
 Date: Thu, 9 Jun 2016 14:12:32 +0300
-Subject: [PATCH 17/40] ASoC: fsl: add analog audio support switch for imx
+Subject: [PATCH 17/44] ASoC: fsl: add analog audio support switch for imx
  boards with wm8731
 
 Signed-off-by: Valentin Raevsky <valentin@compulab.co.il>

@@ -1,7 +1,7 @@
 From 4f59123da52d525320b3ac20410e1e6afeade693 Mon Sep 17 00:00:00 2001
 From: Ilya Ledvich <ilya@compulab.co.il>
 Date: Wed, 4 Sep 2019 13:32:33 +0300
-Subject: [PATCH 37/40] ARM: configs: add defconfig for compulab imx7 based
+Subject: [PATCH 37/44] ARM: configs: add defconfig for compulab imx7 based
  devices
 
 Add defconfig to be used for Compulab devices based on NXP i.MX7 SoC:

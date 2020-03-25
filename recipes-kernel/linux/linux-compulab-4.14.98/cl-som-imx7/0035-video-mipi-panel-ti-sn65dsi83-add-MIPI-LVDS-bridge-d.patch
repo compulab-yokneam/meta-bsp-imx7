@@ -1,7 +1,7 @@
 From 4eba59f167bc9f6842c9d4c7a74deffcec29bcc5 Mon Sep 17 00:00:00 2001
 From: Valentin Raevsky <valentin@compulab.co.il>
 Date: Mon, 3 Sep 2018 18:06:25 +0300
-Subject: [PATCH 35/40] video: mipi-panel: ti,sn65dsi83: add MIPI LVDS bridge
+Subject: [PATCH 35/44] video: mipi-panel: ti,sn65dsi83: add MIPI LVDS bridge
  driver
 
 Signed-off-by: Valentin Raevsky <valentin@compulab.co.il>
