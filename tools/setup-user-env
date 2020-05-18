@@ -103,7 +103,16 @@ EOF
 fi
 }
 
-declare -A ARRAYNAME=( [firefox]="no" [rootfs]="rw" [set_image_size]="no" [kernel]="4.19.35" [real_time_linux]="no" [console_root_autologin]="yes" [enable_boot_scr]="no" )
+u_boot=( 2017.07 2018.11 )
+cfg_u_boot() {
+if [[ $1 == "2017.07" ]];then
+cat << EOF >> ${user_local_conf}
+PREFERRED_VERSION_u-boot-compulab = "$1"
+EOF
+fi
+}
+
+declare -A ARRAYNAME=( [firefox]="no" [rootfs]="rw" [set_image_size]="no" [kernel]="4.19.35" [real_time_linux]="no" [u_boot]="2017.07" [console_root_autologin]="yes" [enable_boot_scr]="no" )
 
 cat << EOF
 --- Users' Configurations started ---
