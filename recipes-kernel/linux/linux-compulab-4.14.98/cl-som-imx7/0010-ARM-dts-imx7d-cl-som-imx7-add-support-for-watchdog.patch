@@ -1,7 +1,7 @@
 From 32cb6f2f9ca233c1a211cf72cf563d110140f892 Mon Sep 17 00:00:00 2001
 From: Ilya Ledvich <ilya@compulab.co.il>
 Date: Sun, 5 Mar 2017 15:21:53 +0200
-Subject: [PATCH 10/44] ARM: dts: imx7d: cl-som-imx7: add support for watchdog
+Subject: [PATCH 10/55] ARM: dts: imx7d: cl-som-imx7: add support for watchdog
 
 Add support for watchdog WDOG1 for board reset.
 

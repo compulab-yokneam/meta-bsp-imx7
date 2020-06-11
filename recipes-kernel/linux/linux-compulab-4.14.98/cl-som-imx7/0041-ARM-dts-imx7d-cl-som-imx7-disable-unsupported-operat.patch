@@ -1,7 +1,7 @@
 From 315e2a0365efa7bbc267542fe2b9a85e0e13eef0 Mon Sep 17 00:00:00 2001
 From: Ilya Ledvich <ilya@compulab.co.il>
 Date: Thu, 2 Jan 2020 17:32:33 +0200
-Subject: [PATCH 41/44] ARM: dts: imx7d: cl-som-imx7: disable unsupported
+Subject: [PATCH 41/55] ARM: dts: imx7d: cl-som-imx7: disable unsupported
  operating point
 
 Redefine the 'operating-points' array to include only operating points

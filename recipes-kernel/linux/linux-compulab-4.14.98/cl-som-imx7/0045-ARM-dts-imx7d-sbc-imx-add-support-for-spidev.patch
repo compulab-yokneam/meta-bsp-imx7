@@ -1,0 +1,67 @@
+From b26c62655da424ef2108a3e081c8aaccc19aebbc Mon Sep 17 00:00:00 2001
+From: Ilya Ledvich <ilya@compulab.co.il>
+Date: Tue, 25 Feb 2020 07:37:43 +0200
+Subject: [PATCH 45/55] ARM: dts: imx7d: sbc-imx: add support for spidev
+
+Enable SPI2 bus. Define a  general purpose SPI device on SPI2 bus
+to be accessed via spidev driver. SPI2 pins are routed to P18 header
+on the SB-SOM-iMX7 baseboard:
+ - SCLK - P18-09
+ - MOSI - P18-10
+ - MISO - P18-11
+ - SS0  - P18-12
+
+Signed-off-by: Ilya Ledvich <ilya@compulab.co.il>
+---
+ arch/arm/boot/dts/imx7d-sbc-imx7.dts | 28 ++++++++++++++++++++++++++++
+ 1 file changed, 28 insertions(+)
+
+diff --git a/arch/arm/boot/dts/imx7d-sbc-imx7.dts b/arch/arm/boot/dts/imx7d-sbc-imx7.dts
+index 9103d45562c0..206fb6350ec4 100644
+--- a/arch/arm/boot/dts/imx7d-sbc-imx7.dts
++++ b/arch/arm/boot/dts/imx7d-sbc-imx7.dts
+@@ -30,6 +30,20 @@
+ 	};
+ };
+ 
++&ecspi2 {
++	fsl,spi-num-chipselects = <1>;
++	pinctrl-names = "default";
++	pinctrl-0 = <&pinctrl_ecspi2 &pinctrl_ecspi2_cs>;
++	cs-gpios = <&gpio4 23 0>;
++	status = "okay";
++
++	spidev0: spi@0 {
++		reg = <0>;
++		compatible = "rohm,dh2228fv";
++		spi-max-frequency = <10000000>;
++	};
++};
++
+ &flexcan1 {
+ 	pinctrl-names = "default";
+ 	pinctrl-0 = <&pinctrl_flexcan1>;
+@@ -199,6 +213,20 @@
+ 		>;
+ 	};
+ 
++	pinctrl_ecspi2: ecspi2grp {
++		fsl,pins = <
++			MX7D_PAD_ECSPI2_MOSI__ECSPI2_MOSI	0xf /* P18-10 */
++			MX7D_PAD_ECSPI2_MISO__ECSPI2_MISO	0xf /* P18-11 */
++			MX7D_PAD_ECSPI2_SCLK__ECSPI2_SCLK	0xf /* P18-09 */
++		>;
++	};
++
++	pinctrl_ecspi2_cs: ecspi2_cs_grp {
++		fsl,pins = <
++			MX7D_PAD_ECSPI2_SS0__GPIO4_IO23		0x34 /* P18-12 */
++		>;
++	};
++
+ 	pinctrl_flexcan1: flexcan1grp {
+ 		fsl,pins = <
+ 			MX7D_PAD_I2C1_SCL__FLEXCAN1_RX		0x59
+-- 
+2.20.1
+

@@ -1,7 +1,7 @@
 From 14c806d2bb9d10f929dd0561157d18039f93c4a9 Mon Sep 17 00:00:00 2001
 From: Ilya Ledvich <ilya@compulab.co.il>
 Date: Tue, 9 Feb 2016 10:11:09 +0200
-Subject: [PATCH 07/44] ARM: dts: imx7d: cl-som-imx7: add support for SPI flash
+Subject: [PATCH 07/55] ARM: dts: imx7d: cl-som-imx7: add support for SPI flash
 
 Add support for SPI flash over SPI1 bus.
 

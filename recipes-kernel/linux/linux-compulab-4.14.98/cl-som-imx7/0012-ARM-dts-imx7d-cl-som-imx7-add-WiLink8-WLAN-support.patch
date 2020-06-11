@@ -1,7 +1,7 @@
 From b5e49350e0cd6b9dd548489c7efc12d3d6e17300 Mon Sep 17 00:00:00 2001
 From: Ilya Ledvich <ilya@compulab.co.il>
 Date: Fri, 8 Apr 2016 09:16:19 +0300
-Subject: [PATCH 12/44] ARM: dts: imx7d: cl-som-imx7: add WiLink8 WLAN support
+Subject: [PATCH 12/55] ARM: dts: imx7d: cl-som-imx7: add WiLink8 WLAN support
 
 Add support for TI's WiLink8 WLAN module on SD2 bus.
 

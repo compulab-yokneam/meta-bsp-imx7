@@ -1,0 +1,34 @@
+From c2ff9bcbbc9b175962f79801fa03b14d925c54dd Mon Sep 17 00:00:00 2001
+From: Ilya Ledvich <ilya@compulab.co.il>
+Date: Sun, 15 Mar 2020 11:18:05 +0200
+Subject: [PATCH 48/55] ARM: dts: imx7d: cl-som-imx7: rework WiLink Bluetooth
+ support
+
+Rework support of WiLink Bluetooth module on UART3.
+Bind the device to hci-ti driver which now handles all related
+aspects indluding reset sequence.
+
+Signed-off-by: Ilya Ledvich <ilya@compulab.co.il>
+---
+ arch/arm/boot/dts/imx7d-cl-som-imx7.dts | 5 +++++
+ 1 file changed, 5 insertions(+)
+
+diff --git a/arch/arm/boot/dts/imx7d-cl-som-imx7.dts b/arch/arm/boot/dts/imx7d-cl-som-imx7.dts
+index 5759f555b3cb..922c015ed371 100644
+--- a/arch/arm/boot/dts/imx7d-cl-som-imx7.dts
++++ b/arch/arm/boot/dts/imx7d-cl-som-imx7.dts
+@@ -418,6 +418,11 @@
+ 	assigned-clock-parents = <&clks IMX7D_PLL_SYS_MAIN_240M_CLK>;
+ 	status = "okay";
+ 	fsl,uart-has-rtscts;
++
++	bluetooth {
++		compatible = "ti,wl1835-st";
++		enable-gpios = <&pca9555 1 GPIO_ACTIVE_HIGH>;
++	};
+ };
+ 
+ &usbotg1 {
+-- 
+2.20.1
+

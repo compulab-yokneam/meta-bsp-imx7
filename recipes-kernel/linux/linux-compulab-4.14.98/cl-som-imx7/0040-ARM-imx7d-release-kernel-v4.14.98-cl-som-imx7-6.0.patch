@@ -1,7 +1,7 @@
 From ce02e890b097c080d0e076bf08fe7adddc3b0fcc Mon Sep 17 00:00:00 2001
 From: Ilya Ledvich <ilya@compulab.co.il>
 Date: Thu, 24 Oct 2019 15:02:31 +0300
-Subject: [PATCH 40/44] ARM: imx7d: release kernel v4.14.98-cl-som-imx7-6.0
+Subject: [PATCH 40/55] ARM: imx7d: release kernel v4.14.98-cl-som-imx7-6.0
 
 Signed-off-by: Ilya Ledvich <ilya@compulab.co.il>
 ---

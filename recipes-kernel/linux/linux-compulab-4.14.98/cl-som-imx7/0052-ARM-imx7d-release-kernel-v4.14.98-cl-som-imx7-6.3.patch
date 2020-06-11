@@ -1,7 +1,7 @@
-From 6c20b2d49db98a8f510bfe860ec85bfd92fb274f Mon Sep 17 00:00:00 2001
+From 49f98b74532cea30d34c7bc20dc01b58d004cfee Mon Sep 17 00:00:00 2001
 From: Ilya Ledvich <ilya@compulab.co.il>
-Date: Thu, 2 Jan 2020 17:36:57 +0200
-Subject: [PATCH 44/55] ARM: imx7d: release kernel v4.14.98-cl-som-imx7-6.1
+Date: Tue, 21 Apr 2020 15:53:23 +0300
+Subject: [PATCH 52/55] ARM: imx7d: release kernel v4.14.98-cl-som-imx7-6.3
 
 Signed-off-by: Ilya Ledvich <ilya@compulab.co.il>
 ---
@@ -9,15 +9,15 @@ Signed-off-by: Ilya Ledvich <ilya@compulab.co.il>
  1 file changed, 1 insertion(+), 1 deletion(-)
 
 diff --git a/Makefile b/Makefile
-index e4c398b0a73e..ddda0c8462e6 100644
+index 6a831a1b06ce..1d8204cee69a 100644
 --- a/Makefile
 +++ b/Makefile
 @@ -2,7 +2,7 @@
  VERSION = 4
  PATCHLEVEL = 14
  SUBLEVEL = 98
--EXTRAVERSION = -cl-som-imx7-6.0
-+EXTRAVERSION = -cl-som-imx7-6.1
+-EXTRAVERSION = -cl-som-imx7-6.2
++EXTRAVERSION = -cl-som-imx7-6.3
  NAME = Petit Gorille
  
  # *DOCUMENTATION*

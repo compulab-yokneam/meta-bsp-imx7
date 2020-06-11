@@ -1,7 +1,7 @@
 From ebf514a247f0c350f24bf281d06578cb78416288 Mon Sep 17 00:00:00 2001
 From: Valentin Raevsky <valentin@compulab.co.il>
 Date: Mon, 3 Sep 2018 17:31:40 +0300
-Subject: [PATCH 34/44] MLK-11395-9 video: mipi_dsi_samsung: add MIPI host side
+Subject: [PATCH 34/55] MLK-11395-9 video: mipi_dsi_samsung: add MIPI host side
  congiguration for ti,sn65dsi83x
 
 * Move the MIPI DSI host timing configuration values to the configuration

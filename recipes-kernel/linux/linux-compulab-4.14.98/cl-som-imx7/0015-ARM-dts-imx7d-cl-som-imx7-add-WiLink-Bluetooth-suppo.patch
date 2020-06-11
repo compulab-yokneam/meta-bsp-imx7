@@ -1,7 +1,7 @@
 From b6e6907b03d829a4d0f0447b4b8e3a9e89f67799 Mon Sep 17 00:00:00 2001
 From: Ilya Ledvich <ilya@compulab.co.il>
 Date: Sun, 29 May 2016 17:14:53 +0300
-Subject: [PATCH 15/44] ARM: dts: imx7d: cl-som-imx7: add WiLink Bluetooth
+Subject: [PATCH 15/55] ARM: dts: imx7d: cl-som-imx7: add WiLink Bluetooth
  support
 
 Add support for TI's WiLink8 Bluetooth module on UART3.

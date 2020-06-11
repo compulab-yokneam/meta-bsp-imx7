@@ -1,7 +1,7 @@
 From 35a7b66eb738526e0119466d3a2338a10e3336be Mon Sep 17 00:00:00 2001
 From: Uri Mashiach <uri.mashiach@compulab.co.il>
 Date: Mon, 19 Sep 2016 09:16:09 +0300
-Subject: [PATCH 13/44] regulator: userspace-consumer: add MODULE_ALIAS macro
+Subject: [PATCH 13/55] regulator: userspace-consumer: add MODULE_ALIAS macro
 
 Enable userspace-consumer module initiation.
 Without the macro the module can only be initiated by the

@@ -1,0 +1,50 @@
+From 9f0f1f0aaa7eb41d658f97a96cd9450262d43b2c Mon Sep 17 00:00:00 2001
+From: Ilya Ledvich <ilya@compulab.co.il>
+Date: Sun, 15 Mar 2020 11:12:01 +0200
+Subject: [PATCH 47/55] Revert "ARM: imx7d: cl-som-imx7: Bluetooth control with
+ regulator"
+
+This reverts commit e849dfcc170d410386519007a8546668b40563ab.
+---
+ arch/arm/boot/dts/imx7d-cl-som-imx7.dts | 18 ------------------
+ 1 file changed, 18 deletions(-)
+
+diff --git a/arch/arm/boot/dts/imx7d-cl-som-imx7.dts b/arch/arm/boot/dts/imx7d-cl-som-imx7.dts
+index 987f43067291..5759f555b3cb 100644
+--- a/arch/arm/boot/dts/imx7d-cl-som-imx7.dts
++++ b/arch/arm/boot/dts/imx7d-cl-som-imx7.dts
+@@ -54,16 +54,6 @@
+ 		startup-delay-us = <70000>;
+ 		enable-active-high;
+ 	};
+-
+-	bt_en_reg: fixedregulator-bt_en {
+-		compatible = "regulator-fixed";
+-		regulator-name = "bt_en_fixed";
+-		regulator-min-microvolt = <3300000>;
+-		regulator-max-microvolt = <3300000>;
+-		gpio = <&pca9555 1 GPIO_ACTIVE_HIGH>;
+-		startup-delay-us = <1000>;
+-		enable-active-high;
+-	};
+ 	/* Regulators - end */
+ 
+ 	leds {
+@@ -76,14 +66,6 @@
+ 		};
+ 	};
+ 
+-	bt_enable: bt_enable@0 {
+-		compatible = "userspace-consumer-wrapper";
+-		comment = "Enable/disbale bluetooth regulator bt_en_reg";
+-
+-		regulator-name = "bt_en_fixed";
+-		us-folder-num = <0>;
+-	};
+-
+         sound {
+ 		compatible = "simple-audio-card";
+ 		simple-audio-card,name = "cl-som-imx7";
+-- 
+2.20.1
+

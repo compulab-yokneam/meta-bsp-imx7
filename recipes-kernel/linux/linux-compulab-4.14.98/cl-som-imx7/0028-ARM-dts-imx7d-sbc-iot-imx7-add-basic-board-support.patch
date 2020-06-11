@@ -1,7 +1,7 @@
 From 4bdf38c31726c2c90b8a6d0061d2c43318b1377a Mon Sep 17 00:00:00 2001
 From: Ilya Ledvich <ilya@compulab.co.il>
 Date: Thu, 8 Feb 2018 11:17:48 +0200
-Subject: [PATCH 28/44] ARM: dts: imx7d: sbc-iot-imx7: add basic board support
+Subject: [PATCH 28/55] ARM: dts: imx7d: sbc-iot-imx7: add basic board support
 
 The SB-IOT-iMX7 base board together with CL-SOM-iMX7 SoM form
 SBC-IOT-iMX7 single board computer.
