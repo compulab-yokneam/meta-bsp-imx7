@@ -1,0 +1,43 @@
+From 54405f83dd94e1eab2764bce8b077b8174f0ade9 Mon Sep 17 00:00:00 2001
+From: Ilya Ledvich <ilya@compulab.co.il>
+Date: Sat, 2 May 2020 12:35:51 +0300
+Subject: [PATCH 53/55] ARM: dts: imx7d: sbc-imx7: enable adc1
+
+The ADC1 converter pins are router to the P4 header on SB-SOM-iMX7 baseboard:
+ - IN0 - P4-24
+ - IN1 - P4-26
+ - IN2 - P4-28
+ - IN3 - P4-30
+The device can be accessed via sysfs interface: /sys/bus/iio/devices/.
+
+Signed-off-by: Ilya Ledvich <ilya@compulab.co.il>
+---
+ arch/arm/boot/dts/imx7d-sbc-imx7.dts | 12 ++++++++++++
+ 1 file changed, 12 insertions(+)
+
+diff --git a/arch/arm/boot/dts/imx7d-sbc-imx7.dts b/arch/arm/boot/dts/imx7d-sbc-imx7.dts
+index 206fb6350ec4..66cbc170c0db 100644
+--- a/arch/arm/boot/dts/imx7d-sbc-imx7.dts
++++ b/arch/arm/boot/dts/imx7d-sbc-imx7.dts
+@@ -28,6 +28,18 @@
+ 		default-brightness-level = <6>;
+ 		status = "okay";
+ 	};
++
++	reg_vref_1v8: regulator-vref-1v8 {
++		compatible = "regulator-fixed";
++		regulator-name = "vref-1v8";
++		regulator-min-microvolt = <1800000>;
++		regulator-max-microvolt = <1800000>;
++	};
++};
++
++&adc1 {
++	vref-supply = <&reg_vref_1v8>;
++	status = "okay";
+ };
+ 
+ &ecspi2 {
+-- 
+2.20.1
+

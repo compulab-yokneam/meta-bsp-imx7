@@ -1,7 +1,7 @@
 From ea1ea562a39cd33f489d31bc7d87ac4482111ce3 Mon Sep 17 00:00:00 2001
 From: Ilya Ledvich <ilya@compulab.co.il>
 Date: Wed, 10 Feb 2016 10:34:11 +0200
-Subject: [PATCH 08/44] ARM: dts: imx7d: cl-som-imx7: add support for USB host
+Subject: [PATCH 08/55] ARM: dts: imx7d: cl-som-imx7: add support for USB host
 
 Enable USB OTG2 port in host mode.
 

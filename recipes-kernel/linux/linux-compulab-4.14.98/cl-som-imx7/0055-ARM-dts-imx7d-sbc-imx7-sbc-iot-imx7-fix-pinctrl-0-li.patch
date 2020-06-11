@@ -1,0 +1,56 @@
+From 4c811db631af5c1bc646ff86fcf52da8cc2b92b5 Mon Sep 17 00:00:00 2001
+From: Ilya Ledvich <ilya@compulab.co.il>
+Date: Mon, 15 Jun 2020 14:23:55 +0300
+Subject: [PATCH 55/55] ARM: dts: imx7d: sbc-imx7 & sbc-iot-imx7: fix pinctrl-0
+ list
+
+Signed-off-by: Ilya Ledvich <ilya@compulab.co.il>
+---
+ arch/arm/boot/dts/imx7d-sbc-imx7.dts               | 3 +--
+ arch/arm/boot/dts/imx7d-sbc-iot-imx7-rs485-hdx.dts | 2 --
+ arch/arm/boot/dts/imx7d-sbc-iot-imx7.dts           | 2 +-
+ 3 files changed, 2 insertions(+), 5 deletions(-)
+
+diff --git a/arch/arm/boot/dts/imx7d-sbc-imx7.dts b/arch/arm/boot/dts/imx7d-sbc-imx7.dts
+index 66cbc170c0db..d837ddd92d6c 100644
+--- a/arch/arm/boot/dts/imx7d-sbc-imx7.dts
++++ b/arch/arm/boot/dts/imx7d-sbc-imx7.dts
+@@ -205,8 +205,7 @@
+ };
+ 
+ &iomuxc {
+-	pinctrl-names = "default";
+-	pinctrl-0 = <&pinctrl_gpios>;
++	pinctrl-0 = <&pinctrl_hog &pinctrl_gpios>;
+ 
+ 	pinctrl_gpios: gpiosgrp {
+ 		fsl,pins = <
+diff --git a/arch/arm/boot/dts/imx7d-sbc-iot-imx7-rs485-hdx.dts b/arch/arm/boot/dts/imx7d-sbc-iot-imx7-rs485-hdx.dts
+index 74b575761666..e0645ea3d57a 100644
+--- a/arch/arm/boot/dts/imx7d-sbc-iot-imx7-rs485-hdx.dts
++++ b/arch/arm/boot/dts/imx7d-sbc-iot-imx7-rs485-hdx.dts
+@@ -13,8 +13,6 @@
+ #include "imx7d-sbc-iot-imx7.dts"
+ 
+ &iomuxc {
+-	pinctrl-1 = <&pinctrl_xpen>;
+-
+ 	pinctrl_uart7_rs485_hdx: uart7rs485hdxgrp {
+ 		fsl,pins = <
+ 			MX7D_PAD_ECSPI2_MOSI__UART7_DCE_TX	0x79 /* R485-TX */
+diff --git a/arch/arm/boot/dts/imx7d-sbc-iot-imx7.dts b/arch/arm/boot/dts/imx7d-sbc-iot-imx7.dts
+index a69748bf59ca..ea19a0bfdae2 100644
+--- a/arch/arm/boot/dts/imx7d-sbc-iot-imx7.dts
++++ b/arch/arm/boot/dts/imx7d-sbc-iot-imx7.dts
+@@ -139,7 +139,7 @@
+ };
+ 
+ &iomuxc {
+-	pinctrl-1 = <&pinctrl_xpen>;
++	pinctrl-0 = <&pinctrl_hog &pinctrl_xpen>;
+ 
+ 	/* SB-IOT-iMX7 Xpension Header P7 */
+ 	pinctrl_xpen: xpengrp {
+-- 
+2.20.1
+

@@ -43,6 +43,17 @@ SRC_URI_append_cl-som-imx7 += "\
     file://0042-mtd-tests-nandecctest-add-dummy-module-parameter.patch \
     file://0043-ARM-configs-update-compulab_imx7_defconfig.patch \
     file://0044-ARM-imx7d-release-kernel-v4.14.98-cl-som-imx7-6.1.patch \
+    file://0045-ARM-dts-imx7d-sbc-imx-add-support-for-spidev.patch \
+    file://0046-ARM-configs-add-Moby-compatible-defconfig-for-compul.patch \
+    file://0047-Revert-ARM-imx7d-cl-som-imx7-Bluetooth-control-with-.patch \
+    file://0048-ARM-dts-imx7d-cl-som-imx7-rework-WiLink-Bluetooth-su.patch \
+    file://0049-ARM-imx7d-release-kernel-v4.14.98-cl-som-imx7-6.2.patch \
+    file://0050-ARM-config-compulab-update-defconfig.patch \
+    file://0051-ARM-config-compulab-update-Moby-defconfig.patch \
+    file://0052-ARM-imx7d-release-kernel-v4.14.98-cl-som-imx7-6.3.patch \
+    file://0053-ARM-dts-imx7d-sbc-imx7-enable-adc1.patch \
+    file://0054-ARM-dts-imx7d-cl-som-imx7-rework-USB-hub-reset.patch \
+    file://0055-ARM-dts-imx7d-sbc-imx7-sbc-iot-imx7-fix-pinctrl-0-li.patch \
     file://defconfig \
 "
 

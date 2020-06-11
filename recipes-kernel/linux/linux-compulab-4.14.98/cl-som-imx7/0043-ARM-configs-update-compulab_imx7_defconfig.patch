@@ -1,7 +1,7 @@
 From f2d7f566268fb74f52c64287ddbde45871785748 Mon Sep 17 00:00:00 2001
 From: Ilya Ledvich <ilya@compulab.co.il>
 Date: Thu, 2 Jan 2020 18:17:46 +0200
-Subject: [PATCH 43/44] ARM: configs: update compulab_imx7_defconfig
+Subject: [PATCH 43/55] ARM: configs: update compulab_imx7_defconfig
 
 Signed-off-by: Ilya Ledvich <ilya@compulab.co.il>
 ---

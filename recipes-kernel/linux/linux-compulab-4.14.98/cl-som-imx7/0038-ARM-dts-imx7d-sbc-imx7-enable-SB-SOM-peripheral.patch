@@ -1,7 +1,7 @@
 From 15822822b9ecc2668f2d003cd69c9e70e1757fc9 Mon Sep 17 00:00:00 2001
 From: Uri Mashiach <uri.mashiach@compulab.co.il>
 Date: Wed, 16 Jan 2019 09:50:05 +0200
-Subject: [PATCH 38/44] ARM: dts: imx7d: sbc-imx7: enable SB-SOM peripheral
+Subject: [PATCH 38/55] ARM: dts: imx7d: sbc-imx7: enable SB-SOM peripheral
 
 Some of the SOC signals that are routed to connectors P4 and P5 of the
 SB-SOM are not enabled.

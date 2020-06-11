@@ -1,0 +1,29 @@
+From d3f72830815da76cefc52e0f04d86684879b40cc Mon Sep 17 00:00:00 2001
+From: Ilya Ledvich <ilya@compulab.co.il>
+Date: Tue, 21 Apr 2020 15:10:43 +0300
+Subject: [PATCH 50/55] ARM: config: compulab: update defconfig
+
+Update compulab_imx7_defconfig. Enable following options:
+ - CONFIG_USB_CHIPIDEA
+
+Signed-off-by: Ilya Ledvich <ilya@compulab.co.il>
+---
+ arch/arm/configs/compulab_imx7_defconfig | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/arch/arm/configs/compulab_imx7_defconfig b/arch/arm/configs/compulab_imx7_defconfig
+index 72bb39f8993b..0e861b44e671 100644
+--- a/arch/arm/configs/compulab_imx7_defconfig
++++ b/arch/arm/configs/compulab_imx7_defconfig
+@@ -489,7 +489,7 @@ CONFIG_USB_EHCI_HCD=y
+ CONFIG_USB_EHCI_MXC=y
+ CONFIG_USB_ACM=m
+ CONFIG_USB_STORAGE=y
+-CONFIG_USB_CHIPIDEA=m
++CONFIG_USB_CHIPIDEA=y
+ CONFIG_USB_CHIPIDEA_UDC=y
+ CONFIG_USB_CHIPIDEA_HOST=y
+ CONFIG_USB_SERIAL=m
+-- 
+2.20.1
+
