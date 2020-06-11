@@ -1,7 +1,7 @@
-From 8c191948188d08b282e4ce386eeb986df290eb44 Mon Sep 17 00:00:00 2001
+From 0d78a8894c44190461e2d3bbc2f54f10a257c7fc Mon Sep 17 00:00:00 2001
 From: Ilya Ledvich <ilya@compulab.co.il>
 Date: Mon, 16 Mar 2020 13:59:54 +0200
-Subject: [PATCH 26/40] PCIe: imx6: imx7d: add support for phy refclk source
+Subject: [PATCH 26/39] PCIe: imx6: imx7d: add support for phy refclk source
  configuration
 
 i.MX7D variant of the IP can use either Crystal Oscillator input

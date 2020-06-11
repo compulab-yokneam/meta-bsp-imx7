@@ -1,28 +1,91 @@
-From ac35072f0bdefe4c8bc83a57d7be9c407d736e44 Mon Sep 17 00:00:00 2001
+From 965ce838a415d8069753a0f551c802d769f848e8 Mon Sep 17 00:00:00 2001
 From: Uri Mashiach <uri.mashiach@compulab.co.il>
 Date: Wed, 16 Jan 2019 09:50:05 +0200
-Subject: [PATCH 28/40] ARM: dts: imx7d: sbc-imx7: enable SB-SOM peripheral
+Subject: [PATCH 28/39] ARM: dts: imx7d: sbc-imx7: enable SB-SOM peripheral
 
-Some of the SOC signals that are routed to connectors P4 and P5 of the
-SB-SOM are not enabled.
-
-Enable the following peripherals:
- - uart2 (4-pins mode), uart5 (2-pins mode)
- - i2c3
- - gpio2_28, gpio2_29, gpio2_30, gpio2_31, gpio3_12, gpio3_13, gpio3_14,
-   gpio3_15, gpio3_16, gpio4_10, gpio4_11 gpio5_2
+Enable various interfaces and signals that are routed to P4, P5 and P18
+headers on the SB-SOM baseboard:
+ - ADC1:
+   - IN0 - P4-24
+   - IN1 - P4-26
+   - IN2 - P4-28
+   - IN3 - P4-30
+ - UART2:
+   - TX  - P4-33
+   - RX  - P4-31
+   - CTS - P4-03
+   - RTS - P4-01
+ - UART5:
+   - TX - P5-15
+   - RX - P5-17
+ - I2C3:
+   - SDA - P4-23
+   - SCL - P4-21
+ - GPIO:
+   - gpio2_28 (gpio60): P5-18
+   - gpio2_29 (gpio61): P4-20
+   - gpio2_30 (gpio62): P4-10
+   - gpio2_31 (gpio63): P5-13
+   - gpio3_12 (gpio76): P4-08
+   - gpio3_13 (gpio77): P5-08
+   - gpio3_14 (gpio78): P5-12
+   - gpio3_15 (gpio79): P4-14
+   - gpio3_16 (gpio80): P4-16
+   - gpio4_10 (gpio106): P4-06
+   - gpio4_11 (gpio107): P4-18
+   - gpio5_2 (gpio130): P5-02
+ - SPI2 and define a general purpose SPI device to be accessed via spidev
+   driver - /dev/spidev2.0. Signals routing:
+   - SCLK - P18-09
+   - MOSI - P18-10
+   - MISO - P18-11
+   - SS0  - P18-12
 
 Signed-off-by: Uri Mashiach <uri.mashiach@compulab.co.il>
 Signed-off-by: Ilya Ledvich <ilya@compulab.co.il>
 ---
- arch/arm/boot/dts/imx7d-sbc-imx7.dts | 68 +++++++++++++++++++++++++++-
- 1 file changed, 67 insertions(+), 1 deletion(-)
+ arch/arm/boot/dts/imx7d-sbc-imx7.dts | 108 ++++++++++++++++++++++++++-
+ 1 file changed, 107 insertions(+), 1 deletion(-)
 
 diff --git a/arch/arm/boot/dts/imx7d-sbc-imx7.dts b/arch/arm/boot/dts/imx7d-sbc-imx7.dts
-index d66a597f1b9e..699faeb46d79 100644
+index d66a597f1b9e..c05e0c687823 100644
 --- a/arch/arm/boot/dts/imx7d-sbc-imx7.dts
 +++ b/arch/arm/boot/dts/imx7d-sbc-imx7.dts
-@@ -42,6 +42,13 @@
+@@ -28,6 +28,33 @@
+ 		default-brightness-level = <6>;
+ 		status = "okay";
+ 	};
++
++	reg_vref_1v8: regulator-vref-1v8 {
++		compatible = "regulator-fixed";
++		regulator-name = "vref-1v8";
++		regulator-min-microvolt = <1800000>;
++		regulator-max-microvolt = <1800000>;
++	};
++};
++
++&adc1 {
++	vref-supply = <&reg_vref_1v8>;
++	status = "okay";
++
++};
++
++&ecspi2 {
++	fsl,spi-num-chipselects = <1>;
++	pinctrl-names = "default";
++	pinctrl-0 = <&pinctrl_ecspi2 &pinctrl_ecspi2_cs>;
++	cs-gpios = <&gpio4 23 0>;
++	status = "okay";
++
++	spidev0: spi@0 {
++		reg = <0>;
++		compatible = "rohm,dh2228fv";
++		spi-max-frequency = <10000000>;
++	};
+ };
+ 
+ &flexcan1 {
+@@ -42,6 +69,13 @@
  	status = "okay";
  };
  
@@ -36,7 +99,7 @@ index d66a597f1b9e..699faeb46d79 100644
  &i2c4 {
  	clock-frequency = <100000>;
  	pinctrl-names = "default";
-@@ -80,7 +87,6 @@
+@@ -80,7 +114,6 @@
  		compatible = "sil164";
  		reg = <0x39>;
  	};
@@ -44,7 +107,7 @@ index d66a597f1b9e..699faeb46d79 100644
  };
  
  &lcdif {
-@@ -146,6 +152,23 @@
+@@ -146,6 +179,23 @@
  	status = "okay";
  };
  
@@ -68,12 +131,11 @@ index d66a597f1b9e..699faeb46d79 100644
  &usdhc1 {
  	pinctrl-names = "default";
  	pinctrl-0 = <&pinctrl_usdhc1>;
-@@ -156,6 +179,26 @@
+@@ -156,6 +206,39 @@
  };
  
  &iomuxc {
-+	pinctrl-names = "default";
-+	pinctrl-0 = <&pinctrl_gpios>;
++	pinctrl-0 = <&pinctrl_hog &pinctrl_gpios>;
 +
 +	pinctrl_gpios: gpiosgrp {
 +		fsl,pins = <
@@ -92,10 +154,24 @@ index d66a597f1b9e..699faeb46d79 100644
 +		>;
 +	};
 +
++	pinctrl_ecspi2: ecspi2grp {
++		fsl,pins = <
++			MX7D_PAD_ECSPI2_MOSI__ECSPI2_MOSI	0xf /* P18-10 */
++			MX7D_PAD_ECSPI2_MISO__ECSPI2_MISO	0xf /* P18-11 */
++			MX7D_PAD_ECSPI2_SCLK__ECSPI2_SCLK	0xf /* P18-09 */
++		>;
++	};
++
++	pinctrl_ecspi2_cs: ecspi2_cs_grp {
++		fsl,pins = <
++			MX7D_PAD_ECSPI2_SS0__GPIO4_IO23		0x34 /* P18-12 */
++		>;
++	};
++
  	pinctrl_flexcan1: flexcan1grp {
  		fsl,pins = <
  			MX7D_PAD_I2C1_SCL__FLEXCAN1_RX		0x59
-@@ -170,6 +213,13 @@
+@@ -170,6 +253,13 @@
  		>;
  	};
  
@@ -109,7 +185,7 @@ index d66a597f1b9e..699faeb46d79 100644
  	pinctrl_i2c4: i2c4grp {
  		fsl,pins = <
  			MX7D_PAD_GPIO1_IO11__I2C4_SDA		0x4000000f
-@@ -215,6 +265,22 @@
+@@ -215,6 +305,22 @@
  		>;
  	};
  

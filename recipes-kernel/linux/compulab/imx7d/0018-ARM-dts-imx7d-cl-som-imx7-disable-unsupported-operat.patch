@@ -1,7 +1,7 @@
-From 703017f51c6a9c8c8aa1475da40b64dd33ce638c Mon Sep 17 00:00:00 2001
+From b53d207faf9c5a9b3383139c401144bca86535d3 Mon Sep 17 00:00:00 2001
 From: Ilya Ledvich <ilya@compulab.co.il>
 Date: Thu, 2 Jan 2020 17:32:33 +0200
-Subject: [PATCH 18/40] ARM: dts: imx7d: cl-som-imx7: disable unsupported
+Subject: [PATCH 18/39] ARM: dts: imx7d: cl-som-imx7: disable unsupported
  operating point
 
 Disable 'opp-1200000000' node in the 'cpu0_opp_table' as it's not supported by the CPU
@@ -13,10 +13,10 @@ Signed-off-by: Ilya Ledvich <ilya@compulab.co.il>
  1 file changed, 6 insertions(+)
 
 diff --git a/arch/arm/boot/dts/imx7d-cl-som-imx7.dts b/arch/arm/boot/dts/imx7d-cl-som-imx7.dts
-index 8f8216df560e..6a1b522e2520 100644
+index 9864c508cb9e..ca76d8fdbf3b 100644
 --- a/arch/arm/boot/dts/imx7d-cl-som-imx7.dts
 +++ b/arch/arm/boot/dts/imx7d-cl-som-imx7.dts
-@@ -113,6 +113,12 @@
+@@ -123,6 +123,12 @@
  	cpu-supply = <&sw1a_reg>;
  };
  

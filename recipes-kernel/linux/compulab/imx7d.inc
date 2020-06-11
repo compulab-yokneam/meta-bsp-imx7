@@ -27,18 +27,17 @@ SRC_URI_append_cl-som-imx7 = " \
 	file://0026-PCIe-imx6-imx7d-add-support-for-phy-refclk-source-co.patch \
 	file://0027-ARM-dts-imx7d-sbc-imx7-enable-PCIe.patch \
 	file://0028-ARM-dts-imx7d-sbc-imx7-enable-SB-SOM-peripheral.patch \
-	file://0029-ARM-dts-imx7d-sbc-imx-add-support-for-spidev.patch \
-	file://0030-ARM-dts-imx7d-sbc-imx7-add-support-for-m4.patch \
-	file://0031-ARM-dts-imx7d-sbc-iot-imx7-add-basic-board-support.patch \
-	file://0032-ARM-dts-imx7d-sbc-iot-imx7-add-support-for-CAN-bus.patch \
-	file://0033-ARM-imx7d-clk-select-uart7-clock-parent-and-set-rate.patch \
-	file://0034-ARM-dts-imx7d-sbc-iot-imx7-add-support-for-RS485-in-.patch \
-	file://0035-MLK-11395-9-video-mipi_dsi_samsung-add-MIPI-host-sid.patch \
-	file://0036-video-mipi-panel-ti-sn65dsi83-add-MIPI-LVDS-bridge-d.patch \
-	file://0037-ARM-imx7d-cl-som-imx7-dts-add-LVDS-support.patch \
-	file://0038-rtc-em3027-correct-month-value.patch \
-	file://0039-mtd-tests-nandecctest-add-dummy-module-parameter.patch \
-	file://0040-ARM-configs-add-defconfig-for-compulab-imx7-based-de.patch \
+	file://0029-ARM-dts-imx7d-sbc-imx7-add-support-for-m4.patch \
+	file://0030-ARM-dts-imx7d-sbc-iot-imx7-add-basic-board-support.patch \
+	file://0031-ARM-dts-imx7d-sbc-iot-imx7-add-support-for-CAN-bus.patch \
+	file://0032-ARM-imx7d-clk-select-uart7-clock-parent-and-set-rate.patch \
+	file://0033-ARM-dts-imx7d-sbc-iot-imx7-add-support-for-RS485-in-.patch \
+	file://0034-MLK-11395-9-video-mipi_dsi_samsung-add-MIPI-host-sid.patch \
+	file://0035-video-mipi-panel-ti-sn65dsi83-add-MIPI-LVDS-bridge-d.patch \
+	file://0036-ARM-imx7d-cl-som-imx7-dts-add-LVDS-support.patch \
+	file://0037-rtc-em3027-correct-month-value.patch \
+	file://0038-mtd-tests-nandecctest-add-dummy-module-parameter.patch \
+	file://0039-ARM-configs-add-defconfig-for-compulab-imx7-based-de.patch \
 	file://defconfig \
 "
 

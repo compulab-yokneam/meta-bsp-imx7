@@ -1,7 +1,7 @@
-From 3755d97eea2d30fe8b7b79a786f3da3830561f55 Mon Sep 17 00:00:00 2001
+From fa18e5686bc1677371c5b516cd729ee6f140e074 Mon Sep 17 00:00:00 2001
 From: Ilya Ledvich <ilya@compulab.co.il>
 Date: Thu, 9 Jun 2016 15:35:07 +0300
-Subject: [PATCH 17/40] ARM: dts: imx7d: cl-som-imx7: add analog audio support
+Subject: [PATCH 17/39] ARM: dts: imx7d: cl-som-imx7: add analog audio support
 
 Add analog audio support by means of the simple-audio-card.
 This instance provides a simple glue interface between cpu:sai and codec:wm8731.
@@ -15,10 +15,10 @@ Signed-off-by: Ilya Ledvich <ilya@compulab.co.il>
  1 file changed, 77 insertions(+), 1 deletion(-)
 
 diff --git a/arch/arm/boot/dts/imx7d-cl-som-imx7.dts b/arch/arm/boot/dts/imx7d-cl-som-imx7.dts
-index f9138ea7b1a0..8f8216df560e 100644
+index 6f2355e5680b..9864c508cb9e 100644
 --- a/arch/arm/boot/dts/imx7d-cl-som-imx7.dts
 +++ b/arch/arm/boot/dts/imx7d-cl-som-imx7.dts
-@@ -65,6 +65,48 @@
+@@ -75,6 +75,48 @@
  			linux,default-trigger = "heartbeat";
  		};
  	};
@@ -67,7 +67,7 @@ index f9138ea7b1a0..8f8216df560e 100644
  };
  
  &cpu0 {
-@@ -300,6 +342,15 @@
+@@ -310,6 +352,15 @@
  		};
  	};
  
@@ -83,7 +83,7 @@ index f9138ea7b1a0..8f8216df560e 100644
  	pca9555: pca9555@20 {
  		compatible = "nxp,pca9555";
  		gpio-controller;
-@@ -335,6 +386,17 @@
+@@ -337,6 +388,17 @@
  	};
  };
  
@@ -101,7 +101,7 @@ index f9138ea7b1a0..8f8216df560e 100644
  &uart1 {
  	pinctrl-names = "default";
  	pinctrl-0 = <&pinctrl_uart1>;
-@@ -496,13 +558,21 @@
+@@ -498,13 +560,21 @@
  		>;
  	};
  
@@ -124,7 +124,7 @@ index f9138ea7b1a0..8f8216df560e 100644
  	pinctrl_uart1: uart1grp {
  		fsl,pins = <
  			MX7D_PAD_UART1_TX_DATA__UART1_DCE_TX		0x79
-@@ -564,6 +634,12 @@
+@@ -566,6 +636,12 @@
  		>;
  	};
  

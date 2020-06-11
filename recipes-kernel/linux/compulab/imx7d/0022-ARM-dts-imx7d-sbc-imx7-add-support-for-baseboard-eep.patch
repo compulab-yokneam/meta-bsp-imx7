@@ -1,7 +1,7 @@
-From 59f802dbe4c1998473bf04cd69343f952e69bc02 Mon Sep 17 00:00:00 2001
+From 5e93c42d69326a1f4449caec71adc1c82e19c602 Mon Sep 17 00:00:00 2001
 From: Ilya Ledvich <ilya@compulab.co.il>
 Date: Thu, 7 Dec 2017 10:42:54 +0200
-Subject: [PATCH 22/40] ARM: dts: imx7d: sbc-imx7: add support for baseboard
+Subject: [PATCH 22/39] ARM: dts: imx7d: sbc-imx7: add support for baseboard
  eeprom
 
 Add support for SB-SOM-iMX7 baseboard EEPROM over I2C4 bus.

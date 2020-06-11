@@ -1,7 +1,7 @@
-From 097ec6b340fa8762019f3bc111d837f3da12d36f Mon Sep 17 00:00:00 2001
+From 05ff753e4c7ca1cdc68b5ae3b5a0d703a40b3cc3 Mon Sep 17 00:00:00 2001
 From: Ilya Ledvich <ilya@compulab.co.il>
 Date: Thu, 11 Feb 2016 13:02:36 +0200
-Subject: [PATCH 13/40] ARM: dts: imx7d: cl-som-imx7: add support for NAND
+Subject: [PATCH 13/39] ARM: dts: imx7d: cl-som-imx7: add support for NAND
  flash
 
 Add support for NAND flash on GPMI interface.
@@ -18,7 +18,7 @@ Signed-off-by: Ilya Ledvich <ilya@compulab.co.il>
  1 file changed, 46 insertions(+)
 
 diff --git a/arch/arm/boot/dts/imx7d-cl-som-imx7.dts b/arch/arm/boot/dts/imx7d-cl-som-imx7.dts
-index ae58f4520bd7..67ca8887814b 100644
+index 7cbd7a58fc72..71b389198cd9 100644
 --- a/arch/arm/boot/dts/imx7d-cl-som-imx7.dts
 +++ b/arch/arm/boot/dts/imx7d-cl-som-imx7.dts
 @@ -18,6 +18,10 @@
@@ -32,7 +32,7 @@ index ae58f4520bd7..67ca8887814b 100644
  	memory@80000000 {
  		reg = <0x80000000 0x10000000>; /* 256 MB - minimal configuration */
  	};
-@@ -168,6 +172,28 @@
+@@ -178,6 +182,28 @@
  	};
  };
  
@@ -61,7 +61,7 @@ index ae58f4520bd7..67ca8887814b 100644
  &i2c2 {
  	pinctrl-names = "default";
  	pinctrl-0 = <&pinctrl_i2c2>;
-@@ -394,6 +420,26 @@
+@@ -396,6 +422,26 @@
  		>;
  	};
  

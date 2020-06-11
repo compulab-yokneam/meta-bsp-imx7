@@ -1,7 +1,7 @@
-From 0247a35f02eec77570a872ed337bc4f89b0ab8dc Mon Sep 17 00:00:00 2001
+From cb7eb80ec18dc111d8be1ea55c695e3389f3c189 Mon Sep 17 00:00:00 2001
 From: Ilya Ledvich <ilya@compulab.co.il>
 Date: Sun, 17 Apr 2016 14:26:48 +0300
-Subject: [PATCH 24/40] ARM: dts: imx7d: sbc-imx7: add DVI support
+Subject: [PATCH 24/39] ARM: dts: imx7d: sbc-imx7: add DVI support
 
 Signed-off-by: Ilya Ledvich <ilya@compulab.co.il>
 ---

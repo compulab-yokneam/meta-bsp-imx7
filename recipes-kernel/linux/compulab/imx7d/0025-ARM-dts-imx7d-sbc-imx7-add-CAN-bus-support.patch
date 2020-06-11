@@ -1,7 +1,7 @@
-From fd5dcda6152917a80da2beb4c35d9ff9e0b603f7 Mon Sep 17 00:00:00 2001
+From 37797899e5bda36c2006d6914ca761b2792c34c2 Mon Sep 17 00:00:00 2001
 From: Ilya Ledvich <ilya@compulab.co.il>
 Date: Tue, 14 Jun 2016 11:43:03 +0300
-Subject: [PATCH 25/40] ARM: dts: imx7d: sbc-imx7: add CAN bus support
+Subject: [PATCH 25/39] ARM: dts: imx7d: sbc-imx7: add CAN bus support
 
 Enable CAN bus support over FLEXCAN1 and FLEXCAN2 interfaces.
 

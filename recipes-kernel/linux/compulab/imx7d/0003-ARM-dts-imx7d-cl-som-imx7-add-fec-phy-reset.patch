@@ -1,7 +1,7 @@
 From 17c30bf35ea7c33e6967f250fb44e3a54e38ffde Mon Sep 17 00:00:00 2001
 From: Ilya Ledvich <ilya@compulab.co.il>
 Date: Thu, 11 Jul 2019 09:16:01 +0300
-Subject: [PATCH 03/40] ARM: dts: imx7d: cl-som-imx7: add fec phy reset
+Subject: [PATCH 03/39] ARM: dts: imx7d: cl-som-imx7: add fec phy reset
 
 Signed-off-by: Ilya Ledvich <ilya@compulab.co.il>
 ---

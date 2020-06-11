@@ -1,7 +1,7 @@
-From 19da4c6dc36f8038d181eb4753e1fce5d713ee52 Mon Sep 17 00:00:00 2001
+From 90e43b2f104c19bc001c46c70463d5507947d2ca Mon Sep 17 00:00:00 2001
 From: Ilya Ledvich <ilya@compulab.co.il>
 Date: Sun, 14 Jan 2018 13:36:51 +0200
-Subject: [PATCH 27/40] ARM: dts: imx7d: sbc-imx7: enable PCIe
+Subject: [PATCH 27/39] ARM: dts: imx7d: sbc-imx7: enable PCIe
 
 Enable PCIe peripheral. Use the internal clock input as
 a Reference clock for the PCIe PHY.

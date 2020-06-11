@@ -1,7 +1,7 @@
-From 74dad8d1fc2703273e1b7585fb61909edd0397fe Mon Sep 17 00:00:00 2001
+From a4dfc2b2171c8bba701825868ea12d6ff427f360 Mon Sep 17 00:00:00 2001
 From: Ilya Ledvich <ilya@compulab.co.il>
 Date: Thu, 12 Mar 2020 16:41:29 +0200
-Subject: [PATCH 15/40] ARM: dts: imx7d: cl-som-imx7: add WiLink Bluetooth 
+Subject: [PATCH 15/39] ARM: dts: imx7d: cl-som-imx7: add WiLink Bluetooth 
  support
 
 Add support for TI's WiLink8 Bluetooth module on UART3.
@@ -13,10 +13,10 @@ Signed-off-by: Ilya Ledvich <ilya@compulab.co.il>
  1 file changed, 23 insertions(+)
 
 diff --git a/arch/arm/boot/dts/imx7d-cl-som-imx7.dts b/arch/arm/boot/dts/imx7d-cl-som-imx7.dts
-index 80f10583b80a..f9138ea7b1a0 100644
+index c4a658e07fb2..6f2355e5680b 100644
 --- a/arch/arm/boot/dts/imx7d-cl-som-imx7.dts
 +++ b/arch/arm/boot/dts/imx7d-cl-som-imx7.dts
-@@ -343,6 +343,20 @@
+@@ -345,6 +345,20 @@
  	status = "okay";
  };
  
@@ -37,7 +37,7 @@ index 80f10583b80a..f9138ea7b1a0 100644
  &usbotg1 {
  	pinctrl-names = "default";
  	pinctrl-0 = <&pinctrl_usbotg1>;
-@@ -496,6 +510,15 @@
+@@ -498,6 +512,15 @@
  		>;
  	};
  

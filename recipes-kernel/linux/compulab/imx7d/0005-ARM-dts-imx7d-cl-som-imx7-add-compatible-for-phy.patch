@@ -1,7 +1,7 @@
 From e1920c592eeab325cf01eff0101b24dc8ae878b6 Mon Sep 17 00:00:00 2001
 From: =?UTF-8?q?Andr=C3=A9=20Draszik?= <git@andred.net>
 Date: Fri, 9 Aug 2019 12:29:46 +0100
-Subject: [PATCH 05/40] ARM: dts: imx7d: cl-som-imx7: add compatible for phy
+Subject: [PATCH 05/39] ARM: dts: imx7d: cl-som-imx7: add compatible for phy
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit

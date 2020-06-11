@@ -1,7 +1,7 @@
-From bfdda66cd05c0b3fab5349f1df8e671da590a88f Mon Sep 17 00:00:00 2001
+From 59d42c4cd53a8242005459cf23249e1e23b4e1b4 Mon Sep 17 00:00:00 2001
 From: Ilya Ledvich <ilya@compulab.co.il>
 Date: Fri, 8 Apr 2016 09:16:19 +0300
-Subject: [PATCH 14/40] ARM: dts: imx7d: cl-som-imx7: add WiLink8 WLAN support
+Subject: [PATCH 14/39] ARM: dts: imx7d: cl-som-imx7: add WiLink8 WLAN support
 
 Add support for TI's WiLink8 WLAN module on SD2 bus.
 
@@ -11,10 +11,10 @@ Signed-off-by: Ilya Ledvich <ilya@compulab.co.il>
  1 file changed, 53 insertions(+)
 
 diff --git a/arch/arm/boot/dts/imx7d-cl-som-imx7.dts b/arch/arm/boot/dts/imx7d-cl-som-imx7.dts
-index 67ca8887814b..80f10583b80a 100644
+index 71b389198cd9..c4a658e07fb2 100644
 --- a/arch/arm/boot/dts/imx7d-cl-som-imx7.dts
 +++ b/arch/arm/boot/dts/imx7d-cl-som-imx7.dts
-@@ -43,6 +43,17 @@
+@@ -53,6 +53,17 @@
  		regulator-max-microvolt = <3300000>;
  		regulator-always-on;
  	};
@@ -32,10 +32,10 @@ index 67ca8887814b..80f10583b80a 100644
  	/* Regulators - end */
  
  	leds {
-@@ -302,6 +313,14 @@
- 			output-high;
- 			line-name = "usb_hub_nreset";
- 		};
+@@ -304,6 +315,14 @@
+ 		gpio-controller;
+ 		#gpio-cells = <2>;
+ 		reg = <0x20>;
 +
 +		/* WLAN RF Power enable GPIO */
 +		rf_pwr_en_reg {
@@ -47,7 +47,7 @@ index 67ca8887814b..80f10583b80a 100644
  	};
  
  	eeprom@50 {
-@@ -340,6 +359,28 @@
+@@ -342,6 +361,28 @@
  	status = "okay";
  };
  
@@ -76,7 +76,7 @@ index 67ca8887814b..80f10583b80a 100644
  &usdhc3 {
  	pinctrl-names = "default";
  	pinctrl-0 = <&pinctrl_usdhc3>;
-@@ -363,6 +404,7 @@
+@@ -365,6 +406,7 @@
  
  	pinctrl_hog: hoggrp {
  		fsl,pins = <
@@ -84,7 +84,7 @@ index 67ca8887814b..80f10583b80a 100644
  			MX7D_PAD_SAI1_TX_SYNC__GPIO6_IO14		0x34 /* Onboard LED */
  		>;
  	};
-@@ -454,6 +496,17 @@
+@@ -456,6 +498,17 @@
  		>;
  	};
  

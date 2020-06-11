@@ -1,7 +1,7 @@
-From 2665df70c749ed7b7d476cd6435598149de43975 Mon Sep 17 00:00:00 2001
+From affa26c4f9a55d7cbaff9bba8cf6d532c50f9d54 Mon Sep 17 00:00:00 2001
 From: Nikita Kiryanov <nikita@compulab.co.il>
 Date: Wed, 28 Feb 2018 20:10:00 +0200
-Subject: [PATCH 30/40] ARM: dts: imx7d: sbc-imx7: add support for m4
+Subject: [PATCH 29/39] ARM: dts: imx7d: sbc-imx7: add support for m4
 
 Add device tree settings for sbc-imx7 to support operating FreeRTOS on
 the M4 core alongside Linux.

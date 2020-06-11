@@ -1,7 +1,7 @@
-From cf6adba45f6979c0254a21bba57145878740ece8 Mon Sep 17 00:00:00 2001
+From 14843b728257a5cec3f6cdf5381e6a5bd4664b96 Mon Sep 17 00:00:00 2001
 From: Ilya Ledvich <ilya@compulab.co.il>
 Date: Thu, 8 Feb 2018 11:17:48 +0200
-Subject: [PATCH 31/40] ARM: dts: imx7d: sbc-iot-imx7: add basic board support
+Subject: [PATCH 30/39] ARM: dts: imx7d: sbc-iot-imx7: add basic board support
 
 The SB-IOT-iMX7 base board together with CL-SOM-iMX7 SoM form
 SBC-IOT-iMX7 single board computer.
@@ -41,7 +41,7 @@ index d8abc6ccdd2d..bf2d9a2b8d06 100644
  	imx7d-sdb-gpmi-weim.dtb \
 diff --git a/arch/arm/boot/dts/imx7d-sbc-iot-imx7.dts b/arch/arm/boot/dts/imx7d-sbc-iot-imx7.dts
 new file mode 100644
-index 000000000000..18b19fecb4e2
+index 000000000000..4ec8ecd2e184
 --- /dev/null
 +++ b/arch/arm/boot/dts/imx7d-sbc-iot-imx7.dts
 @@ -0,0 +1,262 @@
@@ -186,7 +186,7 @@ index 000000000000..18b19fecb4e2
 +};
 +
 +&iomuxc {
-+	pinctrl-1 = <&pinctrl_xpen>;
++	pinctrl-0 = <&pinctrl_hog &pinctrl_xpen>;
 +
 +	/* SB-IOT-iMX7 Xpension Header P7 */
 +	pinctrl_xpen: xpengrp {

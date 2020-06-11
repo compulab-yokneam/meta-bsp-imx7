@@ -1,7 +1,7 @@
-From 24ae7904ee22e78d963b5107342daa0bdd29eda4 Mon Sep 17 00:00:00 2001
+From 5be133069ff7cda02fa0ab218f026904fcdfaf21 Mon Sep 17 00:00:00 2001
 From: Ilya Ledvich <ilya@compulab.co.il>
 Date: Mon, 13 Nov 2017 14:18:59 +0200
-Subject: [PATCH 19/40] ARM: dts: imx7d: sbc-imx7: update model string
+Subject: [PATCH 19/39] ARM: dts: imx7d: sbc-imx7: update model string
 
 Update sbc-imx7 model string in order to meet
 the CompuLab ATP machine name requirements.

@@ -1,7 +1,7 @@
 From 8349efd89e841c535b9967c9b1a2076fda78ecce Mon Sep 17 00:00:00 2001
 From: =?UTF-8?q?Andr=C3=A9=20Draszik?= <git@andred.net>
 Date: Fri, 9 Aug 2019 04:12:27 +0100
-Subject: [PATCH 04/40] ARM: dts: imx7d: cl-som-imx7: make ethernet work again
+Subject: [PATCH 04/39] ARM: dts: imx7d: cl-som-imx7: make ethernet work again
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit

@@ -1,7 +1,7 @@
-From 48ef5420884f9bcb59dc9b978320746969ba8c47 Mon Sep 17 00:00:00 2001
+From 7b9d8feb202c7c99974b9a04ff7aa43fbae7e6f8 Mon Sep 17 00:00:00 2001
 From: Ilya Ledvich <ilya@compulab.co.il>
 Date: Thu, 16 Jul 2015 13:58:22 +0300
-Subject: [PATCH 39/40] mtd: tests: nandecctest: add dummy module parameter
+Subject: [PATCH 38/39] mtd: tests: nandecctest: add dummy module parameter
 
 Add dummy module parameter "dev" to the nandecctest to work smoothly
 with Compylab NAND test suit.

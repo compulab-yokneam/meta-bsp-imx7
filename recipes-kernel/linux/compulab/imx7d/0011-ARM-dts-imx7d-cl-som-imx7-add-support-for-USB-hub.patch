@@ -1,17 +1,17 @@
-From 72ebbfe8d808ce286638928feca6c5d8e4279e46 Mon Sep 17 00:00:00 2001
+From 136d95d3cc1d7d1ccdf457392d1aee6d1ddd96e9 Mon Sep 17 00:00:00 2001
 From: Ilya Ledvich <ilya@compulab.co.il>
 Date: Tue, 24 May 2016 16:53:34 +0300
-Subject: [PATCH 11/40] ARM: dts: imx7d: cl-som-imx7: add support for USB hub
+Subject: [PATCH 11/39] ARM: dts: imx7d: cl-som-imx7: add support for USB hub
 
 Add support for onboard USB hub over USB HSIC controller.
 
 Signed-off-by: Ilya Ledvich <ilya@compulab.co.il>
 ---
- arch/arm/boot/dts/imx7d-cl-som-imx7.dts | 14 ++++++++++++++
- 1 file changed, 14 insertions(+)
+ arch/arm/boot/dts/imx7d-cl-som-imx7.dts | 16 ++++++++++++++++
+ 1 file changed, 16 insertions(+)
 
 diff --git a/arch/arm/boot/dts/imx7d-cl-som-imx7.dts b/arch/arm/boot/dts/imx7d-cl-som-imx7.dts
-index d0d48edb79aa..dd2e3fc8fc27 100644
+index d0d48edb79aa..4e9656c25f21 100644
 --- a/arch/arm/boot/dts/imx7d-cl-som-imx7.dts
 +++ b/arch/arm/boot/dts/imx7d-cl-som-imx7.dts
 @@ -22,6 +22,7 @@
@@ -22,7 +22,24 @@ index d0d48edb79aa..dd2e3fc8fc27 100644
  	reg_usb_otg1_vbus: regulator-vbus {
  		compatible = "regulator-fixed";
  		regulator-name = "usb_otg1_vbus";
-@@ -38,6 +39,7 @@
+@@ -31,6 +32,16 @@
+ 		enable-active-high;
+ 	};
+ 
++	reg_usbh_nreset: regulator-usbh-nrst {
++		compatible = "regulator-fixed";
++		regulator-name = "usb_host_nreset";
++		regulator-min-microvolt = <3300000>;
++		regulator-max-microvolt = <3300000>;
++		gpio = <&pca9555 6 GPIO_ACTIVE_LOW>;
++		enable-active-high;
++		regulator-always-on;
++	};
++
+ 	tsc2046reg: regulator-tsc {
+ 		compatible = "regulator-fixed";
+ 		regulator-name = "tsc2046-reg";
+@@ -38,6 +49,7 @@
  		regulator-max-microvolt = <3300000>;
  		regulator-always-on;
  	};
@@ -30,22 +47,7 @@ index d0d48edb79aa..dd2e3fc8fc27 100644
  
  	leds {
  		compatible = "gpio-leds";
-@@ -266,6 +268,14 @@
- 		gpio-controller;
- 		#gpio-cells = <2>;
- 		reg = <0x20>;
-+
-+		/* USB Hub nRST */
-+		usb_hub_nreset {
-+			gpio-hog;
-+			gpios = <6 GPIO_ACTIVE_HIGH>;
-+			output-high;
-+			line-name = "usb_hub_nreset";
-+		};
- 	};
- 
- 	eeprom@50 {
-@@ -300,6 +310,10 @@
+@@ -300,6 +312,10 @@
  	status = "okay";
  };
  
