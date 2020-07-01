@@ -57,4 +57,7 @@ SRC_URI_append_cl-som-imx7 += " \
 	file://cl-som-imx7/0055-arm-imx7d-cl-som-imx7-remove-unused-configs.patch \
 	file://cl-som-imx7/0056-arm-imx7d-cl-som-imx7-fix-USB-reset.patch \
 	file://cl-som-imx7/0057-cl-som-imx7-release-U-Boot-v2017.07-cl-som-imx7-1.5.patch \
+	file://cl-som-imx7/0058-arm-cl-som-imx7-usb-enable-Mass-Storage-gadget.patch \
+	file://cl-som-imx7/0059-arm-imx7d-cl-som-imx7-enable-USB-to-Ethernet-adapter.patch \
+	file://cl-som-imx7/0060-cl-som-imx7-release-U-Boot-v2017.07-cl-som-imx7-1.6.patch \
 "

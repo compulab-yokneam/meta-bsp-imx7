@@ -1,0 +1,28 @@
+From fe443ec9c242e4c8d99fb1ae0d4c74416021bd70 Mon Sep 17 00:00:00 2001
+From: Uri Mashiach <uri.mashiach@compulab.co.il>
+Date: Tue, 9 Jun 2020 10:17:52 +0300
+Subject: [PATCH 60/60] cl-som-imx7: release U-Boot v2017.07-cl-som-imx7-1.6
+
+Release U-Boot v2017.07-cl-som-imx7-1.6
+
+Signed-off-by: Uri Mashiach <uri.mashiach@compulab.co.il>
+---
+ Makefile | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/Makefile b/Makefile
+index 14fea5b553..11bc5e275b 100644
+--- a/Makefile
++++ b/Makefile
+@@ -5,7 +5,7 @@
+ VERSION = 2017
+ PATCHLEVEL = 07
+ SUBLEVEL =
+-EXTRAVERSION = -cl-som-imx7-1.5
++EXTRAVERSION = -cl-som-imx7-1.6
+ NAME =
+ 
+ # *DOCUMENTATION*
+-- 
+2.11.0
+

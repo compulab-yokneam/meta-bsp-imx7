@@ -1,0 +1,47 @@
+From a149f0b4fc95e5dd080dffb0bf1edff3a6e941a8 Mon Sep 17 00:00:00 2001
+From: Uri Mashiach <uri.mashiach@compulab.co.il>
+Date: Mon, 3 Jun 2019 12:34:17 +0300
+Subject: [PATCH 58/60] arm: cl-som-imx7: usb: enable Mass Storage gadget
+
+---
+ configs/cl-som-imx7_defconfig | 5 +++++
+ include/configs/cl-som-imx7.h | 2 ++
+ 2 files changed, 7 insertions(+)
+
+diff --git a/configs/cl-som-imx7_defconfig b/configs/cl-som-imx7_defconfig
+index a7b1b1d417..79b217e763 100644
+--- a/configs/cl-som-imx7_defconfig
++++ b/configs/cl-som-imx7_defconfig
+@@ -33,6 +33,7 @@ CONFIG_CMD_MMC=y
+ CONFIG_CMD_SF=y
+ CONFIG_CMD_I2C=y
+ CONFIG_CMD_USB=y
++CONFIG_CMD_USB_MASS_STORAGE=y
+ CONFIG_CMD_GPIO=y
+ CONFIG_CMD_DHCP=y
+ CONFIG_CMD_MII=y
+@@ -65,4 +66,8 @@ CONFIG_USB_STORAGE=y
+ CONFIG_USB_KEYBOARD=y
+ CONFIG_USB_GADGET=y
+ CONFIG_CI_UDC=y
++CONFIG_USB_GADGET_DOWNLOAD=y
++CONFIG_G_DNL_MANUFACTURER="CL-SOM-iMX7"
++CONFIG_G_DNL_VENDOR_NUM=0x525
++CONFIG_G_DNL_PRODUCT_NUM=0xa4a5
+ CONFIG_OF_LIBFDT=y
+diff --git a/include/configs/cl-som-imx7.h b/include/configs/cl-som-imx7.h
+index 93c5930311..6fbee2186f 100644
+--- a/include/configs/cl-som-imx7.h
++++ b/include/configs/cl-som-imx7.h
+@@ -219,6 +219,8 @@
+ #define CONFIG_USB_ETHER_RNDIS
+ #define CONFIG_USB_ETHER_ASIX
+ #define CONFIG_USB_ETHER_MCS7830
++/* USB Gadget */
++#define CONFIG_USB_FUNCTION_MASS_STORAGE
+ 
+ /* Uncomment to enable iMX thermal driver support */
+ /*#define CONFIG_IMX_THERMAL*/
+-- 
+2.11.0
+
