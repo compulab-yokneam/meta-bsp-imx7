@@ -1,6 +1,6 @@
 # Linaro toolchain how to
 
-* Downlaod the Linaro compiler:
+* Download the Linaro compiler:
 <pre>
 cd ~/Downloads
 wget https://releases.linaro.org/components/toolchain/binaries/latest-7/arm-linux-gnueabihf/gcc-linaro-7.5.0-2019.12-x86_64_arm-linux-gnueabihf.tar.xz
