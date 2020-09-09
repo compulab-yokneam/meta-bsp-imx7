@@ -1,6 +1,6 @@
 # Quick Start Guide
 
-NOTE: `This is not an official CompuLab release yet; it is just a development version for Yocto Warrior.`
+NOTE: `This is the CompuLab Warrior release candidate.`
 
 # Supported CompuLab Machines
 * `cl-som-imx7`
