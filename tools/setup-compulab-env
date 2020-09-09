@@ -13,14 +13,14 @@ fi
 
 get_meta_compulab() {
 dir="../sources/meta-compulab"
-branch="-b devel"
+branch="-b dfbae58a70d41659bce61f7e90e528fa2ed772be"
 url="https://github.com/compulab-yokneam/meta-compulab"
 get_meta ${url} ${branch} ${dir}
 }
 
 get_meta_compulab_bsp() {
 dir="../sources/meta-compulab-bsp"
-branch="-b master"
+branch="-b b57048ab9caa65878ad920632a3e676130d486b8"
 url="https://github.com/compulab-yokneam/meta-compulab-bsp"
 get_meta ${url} ${branch} ${dir}
 }
