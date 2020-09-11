@@ -21,7 +21,7 @@ get_meta ${url} ${branch} ${dir}
 
 get_meta_compulab_bsp() {
 dir="../sources/meta-compulab-bsp"
-branch="b57048ab9caa65878ad920632a3e676130d486b8"
+branch="ced492114feceb1a04d1489269e3405630c8377d"
 url="https://github.com/compulab-yokneam/meta-compulab-bsp"
 get_meta ${url} ${branch} ${dir}
 }
