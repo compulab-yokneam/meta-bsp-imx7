@@ -14,7 +14,7 @@ repo sync
 [source,console]
 git clone -b devel-warrior https://github.com/compulab-yokneam/meta-bsp-imx7.git sources/meta-bsp-imx7/
 
-# Set a desire machine
+# Set COMPULAB_MACHINE environment variable
 * `cl-som-imx7`
 [source,console]
 COMPULAB_MACHINE=cl-som-imx7
@@ -56,17 +56,20 @@ ls -ltr ${BUILDDIR}/tmp/deploy/images/${COMPULAB_MACHINE}
 SD-card images files compressed by `xz` and can be listed this way:
 [source,console]
 ls -ltr ${BUILDDIR}/tmp/deploy/images/${COMPULAB_MACHINE}/*.sdcard.*
-# Sample output
-tmp/deploy/images/cl-som-imx7/compulab-image-cl-som-imx7-20200207133104.rootfs.sdcard.xz
-tmp/deploy/images/cl-som-imx7/compulab-image-cl-som-imx7.sdcard.xz              
-tmp/deploy/images/cl-som-imx7/compulab-image-xfce-cl-som-imx7-20200209074426.rootfs.sdcard.xz
-tmp/deploy/images/cl-som-imx7/compulab-image-xfce-cl-som-imx7.sdcard.xz         
-tmp/deploy/images/cl-som-imx7/core-image-full-cmdline-cl-som-imx7-20200207181732.rootfs.sdcard.xz
-tmp/deploy/images/cl-som-imx7/core-image-full-cmdline-cl-som-imx7.sdcard.xz        
-tmp/deploy/images/cl-som-imx7/core-image-minimal-cl-som-imx7-20200204152232.rootfs.sdcard.xz
-tmp/deploy/images/cl-som-imx7/core-image-minimal-cl-som-imx7.sdcard.xz          
-tmp/deploy/images/cl-som-imx7/fsl-image-qt5-validation-imx-cl-som-imx7-20200208212733.rootfs.sdcard.xz
-tmp/deploy/images/cl-som-imx7/fsl-image-qt5-validation-imx-cl-som-imx7.sdcard.xz
+
+# Create bootable media
+NOTE: In this chapter the target block device `/dev/sdi` is just an example.
+Make use ot the development host device name instead.
+
+## Using `dd`
+[source,console]
+cd ${BUILDDIR}/tmp/deploy/images/${COMPULAB_MACHINE}
+sudo dd bs=1M status=progress if=compulab-image-xfce-cl-som-imx7.wic.xz of=/dev/sdi
+
+## Using `bmaptool`
+[source,console]
+cd ${BUILDDIR}/tmp/deploy/images/${COMPULAB_MACHINE}
+sudo bmaptool copy compulab-image-xfce-cl-som-imx7.wic.xz --bmap compulab-image-xfce-cl-som-imx7.wic.bmap /dev/sdi
 
 # Device Trees and available features
 ## sbc-imx7
