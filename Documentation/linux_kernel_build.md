@@ -19,7 +19,7 @@ cd cl-som-imx7
 </pre>
 * Download CompuLab BSP
 <pre>
-git clone -b master https://github.com/compulab-yokneam/meta-bsp-imx7.git
+git clone -b warrior https://github.com/compulab-yokneam/meta-bsp-imx7.git
 export PATCHES=$(pwd)/meta-bsp-imx7/recipes-kernel/linux/linux-compulab-4.14.98/cl-som-imx7
 </pre>
 
