@@ -1,7 +1,5 @@
 # Quick Start Guide
 
-NOTE: `This is the CompuLab Warrior release candidate.`
-
 # Supported CompuLab Machines
 * `cl-som-imx7`
 
@@ -12,7 +10,7 @@ repo sync
 
 # Download CompuLab meta layer
 [source,console]
-git clone -b devel-warrior https://github.com/compulab-yokneam/meta-bsp-imx7.git sources/meta-bsp-imx7/
+git clone -b warrior https://github.com/compulab-yokneam/meta-bsp-imx7.git sources/meta-bsp-imx7/
 
 # Set COMPULAB_MACHINE environment variable
 * `cl-som-imx7`
