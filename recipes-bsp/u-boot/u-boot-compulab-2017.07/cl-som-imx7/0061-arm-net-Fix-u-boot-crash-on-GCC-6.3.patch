@@ -1,0 +1,40 @@
+From 237a1d20a5a2b595c0aeb1fffb1515c7a07df453 Mon Sep 17 00:00:00 2001
+From: Valentin Raevsky <valentin@compulab.co.il>
+Date: Sun, 4 Oct 2020 11:19:56 +0300
+Subject: [PATCH 61/62] arm: net: Fix u-boot crash on GCC>6.3
+
+Signed-off-by: Valentin Raevsky <valentin@compulab.co.il>
+---
+ include/net.h | 2 +-
+ net/bootp.h   | 2 +-
+ 2 files changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/include/net.h b/include/net.h
+index 2eaa88224c..c4eede7369 100644
+--- a/include/net.h
++++ b/include/net.h
+@@ -397,7 +397,7 @@ struct ip_udp_hdr {
+ 	u16		udp_dst;	/* UDP destination port		*/
+ 	u16		udp_len;	/* Length of UDP packet		*/
+ 	u16		udp_xsum;	/* Checksum			*/
+-};
++} __attribute__((packed));
+ 
+ #define IP_UDP_HDR_SIZE		(sizeof(struct ip_udp_hdr))
+ #define UDP_HDR_SIZE		(IP_UDP_HDR_SIZE - IP_HDR_SIZE)
+diff --git a/net/bootp.h b/net/bootp.h
+index fcb0a64e61..567340ec5d 100644
+--- a/net/bootp.h
++++ b/net/bootp.h
+@@ -49,7 +49,7 @@ struct bootp_hdr {
+ 	char		bp_sname[64];	/* Server host name		*/
+ 	char		bp_file[128];	/* Boot file name		*/
+ 	char		bp_vend[OPT_FIELD_SIZE]; /* Vendor information	*/
+-};
++} __attribute__((packed));
+ 
+ #define BOOTP_HDR_SIZE	sizeof(struct bootp_hdr)
+ 
+-- 
+2.11.0
+
