@@ -1,0 +1,44 @@
+From e73d9e00829094afafa11b5afcc4b7657e9c61e6 Mon Sep 17 00:00:00 2001
+From: Valentin Raevsky <valentin@compulab.co.il>
+Date: Mon, 8 Mar 2021 13:57:58 +0200
+Subject: [PATCH] arm: imx7d: cl-som-imx7: Set SW3VOLT SW[3:0]=4'b1001
+
+Set SW3VOLT SW[3:0]=4'b1001.
+It makes the PMIC set SW3_VOLT = 1.35V.
+Requires for the PF3000 rev A2.
+It has a default SW3VOLT SW[3:0]=4'b0110 for 1.2V.
+
+Signed-off-by: Valentin Raevsky <valentin@compulab.co.il>
+---
+ board/compulab/cl-som-imx7/spl.c | 8 ++++++++
+ 1 file changed, 8 insertions(+)
+
+diff --git a/board/compulab/cl-som-imx7/spl.c b/board/compulab/cl-som-imx7/spl.c
+index e79a9ad130..f4a825eb0d 100644
+--- a/board/compulab/cl-som-imx7/spl.c
++++ b/board/compulab/cl-som-imx7/spl.c
+@@ -164,6 +164,8 @@ static void cl_som_imx7_spl_dram_cfg(void)
+ }
+ 
+ #define PFUZE3000_INTSTAT0_POR 0x01
++#define PFUZE3000_SW3VOLT 0x3c
++#define PFUZE3000_SW3VALUE 0x09
+ #define CL_SOM_IMX7_DUAL_RESET_MIN_BORAD_REV 120
+ 
+ /* Reset module after power on  */
+@@ -171,6 +173,12 @@ static void cl_som_imx7_spl_por(void)
+ {
+ 	u8 buf;
+ 
++	/* Set SW3VOLT SW3[3:0]=4'b1001 = 1.35V */
++	i2c_set_bus_num(CL_SOM_IMX7_I2C_BUS_PMIC);
++	buf = PFUZE3000_SW3VALUE;
++	i2c_write(CONFIG_POWER_PFUZE3000_I2C_ADDR, PFUZE3000_SW3VOLT, 1,
++		 &buf, 1);
++
+ 	i2c_set_bus_num(CL_SOM_IMX7_I2C_BUS_PMIC);
+ 	i2c_read(CONFIG_POWER_PFUZE3000_I2C_ADDR, PFUZE3000_INTSTAT0, 1,
+ 		 &buf, 1);
+-- 
+2.11.0
+
