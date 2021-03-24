@@ -42,6 +42,11 @@ bitbake -k fsl-image-validation-imx
 MACHINE=${COMPULAB_MACHINE} DISTRO=fsl-imx-xwayland source sources/meta-bsp-imx7/tools/setup-env -b build-xwayland-imx7
 bitbake -k fsl-image-qt5-validation-imx
 
+* FrameBuffer image with Qt5 support
+[source,console]
+MACHINE=${COMPULAB_MACHINE} DISTRO=fsl-imx-fb source sources/meta-bsp-imx7/tools/setup-env -b build-xwayland-imx7
+bitbake -k fsl-image-qt5-validation-imx
+
 * XFCE GUI image
 [source,console]
 MACHINE=${COMPULAB_MACHINE} DISTRO=fsl-imx-x11 source sources/meta-bsp-imx7/tools/setup-env -b build-x11-imx7
