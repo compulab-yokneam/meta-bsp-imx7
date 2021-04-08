@@ -63,4 +63,5 @@ SRC_URI_append_cl-som-imx7 += " \
 	file://cl-som-imx7/0061-arm-net-Fix-u-boot-crash-on-GCC-6.3.patch \
 	file://cl-som-imx7/0062-arm-imx7d-cl-som-imx7-Disable-CONFIG_CMD_BOOTEFI_HEL.patch \
 	file://cl-som-imx7/0063-arm-imx7d-cl-som-imx7-Set-SW3VOLT-SW-3-0-4-b1001.patch \
+	file://cl-som-imx7/0064-u-boot-videomode-Add-dvi800x480-mode-support.patch \
 "
