@@ -1,0 +1,72 @@
+From a38ca26d71dfbee483cc2be8df90b49a608e4fa1 Mon Sep 17 00:00:00 2001
+From: Ilya Ledvich <ilya@compulab.co.il>
+Date: Thu, 26 Nov 2020 12:02:56 +0200
+Subject: [PATCH 29/38] ARM: dts: imx7d: add support for high speed modes on
+ SD3 bus
+
+Add pinmux configurations for 100MHz and 200MHz modes on SD3 bus
+to enable high speed modes for eMMC.
+
+Signed-off-by: Ilya Ledvich <ilya@compulab.co.il>
+---
+ arch/arm/boot/dts/imx7d-cl-som-imx7.dts | 36 ++++++++++++++++++++++++-
+ 1 file changed, 35 insertions(+), 1 deletion(-)
+
+diff --git a/arch/arm/boot/dts/imx7d-cl-som-imx7.dts b/arch/arm/boot/dts/imx7d-cl-som-imx7.dts
+index 2b5866db921f..1cc0d58f76fa 100644
+--- a/arch/arm/boot/dts/imx7d-cl-som-imx7.dts
++++ b/arch/arm/boot/dts/imx7d-cl-som-imx7.dts
+@@ -460,8 +460,10 @@
+ };
+ 
+ &usdhc3 {
+-	pinctrl-names = "default";
++	pinctrl-names = "default", "state_100mhz", "state_200mhz";
+ 	pinctrl-0 = <&pinctrl_usdhc3>;
++	pinctrl-1 = <&pinctrl_usdhc3_100mhz>;
++	pinctrl-2 = <&pinctrl_usdhc3_200mhz>;
+ 	assigned-clocks = <&clks IMX7D_USDHC3_ROOT_CLK>;
+ 	assigned-clock-rates = <400000000>;
+ 	bus-width = <8>;
+@@ -617,6 +619,38 @@
+ 			MX7D_PAD_SD3_STROBE__SD3_STROBE			0x19
+ 		>;
+ 	};
++
++	pinctrl_usdhc3_100mhz: usdhc3grp_100mhz {
++		fsl,pins = <
++			MX7D_PAD_SD3_CMD__SD3_CMD			0x5a
++			MX7D_PAD_SD3_CLK__SD3_CLK			0x1a
++			MX7D_PAD_SD3_DATA0__SD3_DATA0			0x5a
++			MX7D_PAD_SD3_DATA1__SD3_DATA1			0x5a
++			MX7D_PAD_SD3_DATA2__SD3_DATA2			0x5a
++			MX7D_PAD_SD3_DATA3__SD3_DATA3			0x5a
++			MX7D_PAD_SD3_DATA4__SD3_DATA4			0x5a
++			MX7D_PAD_SD3_DATA5__SD3_DATA5			0x5a
++			MX7D_PAD_SD3_DATA6__SD3_DATA6			0x5a
++			MX7D_PAD_SD3_DATA7__SD3_DATA7			0x5a
++			MX7D_PAD_SD3_STROBE__SD3_STROBE			0x1a
++		>;
++	};
++
++	pinctrl_usdhc3_200mhz: usdhc3grp_200mhz {
++		fsl,pins = <
++			MX7D_PAD_SD3_CMD__SD3_CMD			0x5b
++			MX7D_PAD_SD3_CLK__SD3_CLK			0x1b
++			MX7D_PAD_SD3_DATA0__SD3_DATA0			0x5b
++			MX7D_PAD_SD3_DATA1__SD3_DATA1			0x5b
++			MX7D_PAD_SD3_DATA2__SD3_DATA2			0x5b
++			MX7D_PAD_SD3_DATA3__SD3_DATA3			0x5b
++			MX7D_PAD_SD3_DATA4__SD3_DATA4			0x5b
++			MX7D_PAD_SD3_DATA5__SD3_DATA5			0x5b
++			MX7D_PAD_SD3_DATA6__SD3_DATA6			0x5b
++			MX7D_PAD_SD3_DATA7__SD3_DATA7			0x5b
++			MX7D_PAD_SD3_STROBE__SD3_STROBE			0x1b
++		>;
++	};
+ };
+ 
+ &iomuxc_lpsr {
+-- 
+2.20.1
+

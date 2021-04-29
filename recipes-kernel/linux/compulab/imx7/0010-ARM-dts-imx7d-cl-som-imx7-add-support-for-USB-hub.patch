@@ -1,0 +1,63 @@
+From 6c5f0e232424eb40c5b30360f7ca209c355a5c03 Mon Sep 17 00:00:00 2001
+From: Ilya Ledvich <ilya@compulab.co.il>
+Date: Tue, 24 May 2016 16:53:34 +0300
+Subject: [PATCH 10/38] ARM: dts: imx7d: cl-som-imx7: add support for USB hub
+
+Add support for onboard USB hub over USB HSIC controller.
+
+Signed-off-by: Ilya Ledvich <ilya@compulab.co.il>
+---
+ arch/arm/boot/dts/imx7d-cl-som-imx7.dts | 16 ++++++++++++++++
+ 1 file changed, 16 insertions(+)
+
+diff --git a/arch/arm/boot/dts/imx7d-cl-som-imx7.dts b/arch/arm/boot/dts/imx7d-cl-som-imx7.dts
+index 145337902bdf..0557012309cb 100644
+--- a/arch/arm/boot/dts/imx7d-cl-som-imx7.dts
++++ b/arch/arm/boot/dts/imx7d-cl-som-imx7.dts
+@@ -23,6 +23,7 @@
+ 		reg = <0x80000000 0x10000000>; /* 256 MB - minimal configuration */
+ 	};
+ 
++	/* Regulators */
+ 	reg_usb_otg1_vbus: regulator-vbus {
+ 		compatible = "regulator-fixed";
+ 		regulator-name = "usb_otg1_vbus";
+@@ -32,6 +33,16 @@
+ 		enable-active-high;
+ 	};
+ 
++	reg_usbh_nreset: regulator-usbh-nrst {
++		compatible = "regulator-fixed";
++		regulator-name = "usb_host_nreset";
++		regulator-min-microvolt = <3300000>;
++		regulator-max-microvolt = <3300000>;
++		gpio = <&pca9555 6 GPIO_ACTIVE_LOW>;
++		enable-active-high;
++		regulator-always-on;
++	};
++
+ 	tsc2046reg: regulator-tsc {
+ 		compatible = "regulator-fixed";
+ 		regulator-name = "tsc2046-reg";
+@@ -39,6 +50,7 @@
+ 		regulator-max-microvolt = <3300000>;
+ 		regulator-always-on;
+ 	};
++	/* Regulators - end */
+ 
+ 	leds {
+ 		compatible = "gpio-leds";
+@@ -306,6 +318,10 @@
+ 	status = "okay";
+ };
+ 
++&usbh {
++	status = "okay";
++};
++
+ &usdhc3 {
+ 	pinctrl-names = "default";
+ 	pinctrl-0 = <&pinctrl_usdhc3>;
+-- 
+2.20.1
+

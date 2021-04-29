@@ -1,0 +1,46 @@
+# Quick Start Guide
+
+# Supported CompuLab Machines
+* `cl-som-imx7`
+
+# Setup Yocto environment
+* WorkDir
+[source,console]
+mkdir compulab-bsp && cd compulab-bsp
+* Set a CompuLab machine:
+[source,console]
+export MACHINE=cl-som-imx7
+
+# Initialize repo manifests
+* NXP
+[source,console]
+repo init -u https://source.codeaurora.org/external/imx/imx-manifest -b imx-linux-gatesgarth -m imx-5.10.9-1.0.0.xml
+repo sync
+* CompuLab
+[source,console]
+mkdir -p .repo/local_manifests
+cd .repo/local_manifests
+wget https://raw.githubusercontent.com/compulab-yokneam/meta-bsp-imx7/gatesgarth/scripts/meta-bsp-imx7.xml
+cd -
+* Sync Them all
+[source,console]
+repo sync
+cd .repo/local_manifests
+ln -sf ../../sources/meta-bsp-imx7/scripts/meta-bsp-imx7.xml .
+cd -
+
+# Setup environment and build image
+* Initialize the build environment:
+[source,console]
+source sources/meta-bsp-imx7/tools/setup-env -b build-${MACHINE}
+* Building the image:
+[source,console]
+bitbake -k imx-image-full
+
+# Create a bootable sd card
+NOTE: In this chapter the target block device `/dev/sdi` is just an example.
+Make use ot the development host device name instead.
+## Using `bmaptool`
+[source,console]
+cd tmp/deploy/images/${MACHINE}
+sudo bmaptool copy imx-image-full-cl-som-imx7.wic.bz2  --bmap imx-image-full-cl-som-imx7.wic.bmap /dev/sdi

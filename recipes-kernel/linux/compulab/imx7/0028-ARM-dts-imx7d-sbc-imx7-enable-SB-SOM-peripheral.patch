@@ -1,0 +1,212 @@
+From 3f58d4cab61cb92166cf4c32430463f40243bec5 Mon Sep 17 00:00:00 2001
+From: Uri Mashiach <uri.mashiach@compulab.co.il>
+Date: Wed, 16 Jan 2019 09:50:05 +0200
+Subject: [PATCH 28/38] ARM: dts: imx7d: sbc-imx7: enable SB-SOM peripheral
+
+Enable various interfaces and signals that are routed to P4, P5 and P18
+headers oo the SB-SOM baseboard:
+ - ADC1:
+   - IN0 - P4-24
+   - IN1 - P4-26
+   - IN2 - P4-28
+   - IN3 - P4-30
+ - UART2:
+   - TX  - P4-33
+   - RX  - P4-31
+   - CTS - P4-03
+   - RTS - P4-01
+ - UART5:
+   - TX - P5-15
+   - RX - P5-17
+ - I2C3:
+   - SDA - P4-23
+   - SCL - P4-21
+ - GPIO:
+   - gpio2_28 (gpio60): P5-18
+   - gpio2_29 (gpio61): P4-20
+   - gpio2_30 (gpio62): P4-10
+   - gpio2_31 (gpio63): P5-13
+   - gpio3_12 (gpio76): P4-08
+   - gpio3_13 (gpio77): P5-08
+   - gpio3_14 (gpio78): P5-12
+   - gpio3_15 (gpio79): P4-14
+   - gpio3_16 (gpio80): P4-16
+   - gpio4_10 (gpio106): P4-06
+   - gpio4_11 (gpio107): P4-18
+   - gpio5_2 (gpio130): P5-02
+ - SPI2 and define a general purpose SPI device to be accessed via spidev
+   driver - /dev/spidev2.0. Signals routing:
+   - SCLK - P18-09
+   - MOSI - P18-10
+   - MISO - P18-11
+   - SS0  - P18-12
+
+Signed-off-by: Uri Mashiach <uri.mashiach@compulab.co.il>
+Signed-off-by: Ilya Ledvich <ilya@compulab.co.il>
+---
+ arch/arm/boot/dts/imx7d-sbc-imx7.dts | 107 ++++++++++++++++++++++++++-
+ 1 file changed, 106 insertions(+), 1 deletion(-)
+
+diff --git a/arch/arm/boot/dts/imx7d-sbc-imx7.dts b/arch/arm/boot/dts/imx7d-sbc-imx7.dts
+index d66f36f366cb..4e3653ecf5d7 100644
+--- a/arch/arm/boot/dts/imx7d-sbc-imx7.dts
++++ b/arch/arm/boot/dts/imx7d-sbc-imx7.dts
+@@ -28,6 +28,32 @@
+ 		default-brightness-level = <6>;
+ 		status = "okay";
+ 	};
++
++	reg_vref_1v8: regulator-vref-1v8 {
++		compatible = "regulator-fixed";
++		regulator-name = "vref-1v8";
++		regulator-min-microvolt = <1800000>;
++		regulator-max-microvolt = <1800000>;
++	};
++};
++
++&adc1 {
++	vref-supply = <&reg_vref_1v8>;
++	status = "okay";
++};
++
++&ecspi2 {
++	fsl,spi-num-chipselects = <1>;
++	pinctrl-names = "default";
++	pinctrl-0 = <&pinctrl_ecspi2 &pinctrl_ecspi2_cs>;
++	cs-gpios = <&gpio4 23 0>;
++	status = "okay";
++
++	spidev0: spi@0 {
++		reg = <0>;
++		compatible = "rohm,dh2228fv";
++		spi-max-frequency = <10000000>;
++	};
+ };
+ 
+ &flexcan1 {
+@@ -42,6 +68,13 @@
+ 	status = "okay";
+ };
+ 
++&i2c3 {
++	clock-frequency = <100000>;
++	pinctrl-names = "default";
++	pinctrl-0 = <&pinctrl_i2c3>;
++	status = "okay";
++};
++
+ &i2c4 {
+ 	clock-frequency = <100000>;
+ 	pinctrl-names = "default";
+@@ -80,7 +113,6 @@
+ 		compatible = "sil164";
+ 		reg = <0x39>;
+ 	};
+-
+ };
+ 
+ &lcdif {
+@@ -146,6 +178,23 @@
+ 	status = "okay";
+ };
+ 
++&uart2 {
++	pinctrl-names = "default";
++	pinctrl-0 = <&pinctrl_uart2>;
++	assigned-clocks = <&clks IMX7D_UART2_ROOT_SRC>;
++	assigned-clock-parents = <&clks IMX7D_OSC_24M_CLK>;
++	fsl,uart-has-rtscts;
++	status = "okay";
++};
++
++&uart5 {
++	pinctrl-names = "default";
++	pinctrl-0 = <&pinctrl_uart5>;
++	assigned-clocks = <&clks IMX7D_UART5_ROOT_SRC>;
++	assigned-clock-parents = <&clks IMX7D_PLL_SYS_MAIN_240M_CLK>;
++	status = "okay";
++};
++
+ &usdhc1 {
+ 	pinctrl-names = "default";
+ 	pinctrl-0 = <&pinctrl_usdhc1>;
+@@ -156,6 +205,39 @@
+ };
+ 
+ &iomuxc {
++	pinctrl-0 = <&pinctrl_hog>, <&pinctrl_gpios>;
++
++	pinctrl_gpios: gpiosgrp {
++		fsl,pins = <
++			MX7D_PAD_EPDC_BDR0__GPIO2_IO28		0x54 /* P5-18 - gpio60 */
++			MX7D_PAD_EPDC_BDR1__GPIO2_IO29		0x54 /* P4-20 - gpio61 */
++			MX7D_PAD_EPDC_PWR_COM__GPIO2_IO30	0x54 /* P4-10 - gpio62 */
++			MX7D_PAD_EPDC_PWR_STAT__GPIO2_IO31	0x54 /* P5-13 - gpio63 */
++			MX7D_PAD_LCD_DATA07__GPIO3_IO12		0x54 /* P4-08 - gpio76 */
++			MX7D_PAD_LCD_DATA08__GPIO3_IO13		0x54 /* P5-08 - gpio77 */
++			MX7D_PAD_LCD_DATA09__GPIO3_IO14		0x54 /* P5-12 - gpio78 */
++			MX7D_PAD_LCD_DATA10__GPIO3_IO15		0x54 /* P4-14 - gpio79 */
++			MX7D_PAD_LCD_DATA11__GPIO3_IO16		0x54 /* P4-16 - gpio80 */
++			MX7D_PAD_I2C2_SCL__GPIO4_IO10		0x54 /* P4-06 - gpio106 */
++			MX7D_PAD_I2C2_SDA__GPIO4_IO11 		0x54 /* P4-18 - gpio107 */
++			MX7D_PAD_SD1_RESET_B__GPIO5_IO2		0x54 /* P5-02 - gpio130 */
++		>;
++	};
++
++	pinctrl_ecspi2: ecspi2grp {
++		fsl,pins = <
++			MX7D_PAD_ECSPI2_MOSI__ECSPI2_MOSI	0xf /* P18-10 */
++			MX7D_PAD_ECSPI2_MISO__ECSPI2_MISO	0xf /* P18-11 */
++			MX7D_PAD_ECSPI2_SCLK__ECSPI2_SCLK	0xf /* P18-09 */
++		>;
++	};
++
++	pinctrl_ecspi2_cs: ecspi2_cs_grp {
++		fsl,pins = <
++			MX7D_PAD_ECSPI2_SS0__GPIO4_IO23		0x34 /* P18-12 */
++		>;
++	};
++
+ 	pinctrl_flexcan1: flexcan1grp {
+ 		fsl,pins = <
+ 			MX7D_PAD_I2C1_SCL__FLEXCAN1_RX		0x59
+@@ -170,6 +252,13 @@
+ 		>;
+ 	};
+ 
++	pinctrl_i2c3: i2c3grp {
++		fsl,pins = <
++			MX7D_PAD_GPIO1_IO09__I2C3_SDA		0x4000000f /* P4-23 */
++			MX7D_PAD_GPIO1_IO08__I2C3_SCL 		0x4000000f /* P4-21 */
++		>;
++	};
++
+ 	pinctrl_i2c4: i2c4grp {
+ 		fsl,pins = <
+ 			MX7D_PAD_GPIO1_IO11__I2C4_SDA		0x4000000f
+@@ -215,6 +304,22 @@
+ 		>;
+ 	};
+ 
++	pinctrl_uart2: uart2grp {
++		fsl,pins = <
++			MX7D_PAD_LCD_ENABLE__UART2_DCE_TX	0x79 /* P4-33 */
++			MX7D_PAD_LCD_CLK__UART2_DCE_RX 		0x79 /* P4-31 */
++			MX7D_PAD_LCD_VSYNC__UART2_DCE_CTS	0x79 /* P4-03 */
++			MX7D_PAD_LCD_HSYNC__UART2_DCE_RTS	0x79 /* P4-01 */
++		>;
++	};
++
++	pinctrl_uart5: uart5grp {
++		fsl,pins = <
++			MX7D_PAD_I2C4_SDA__UART5_DCE_TX		0x79 /* P5-15 */
++			MX7D_PAD_I2C4_SCL__UART5_DCE_RX		0x79 /* P5-17 */
++		>;
++	};
++
+ 	pinctrl_usdhc1: usdhc1grp {
+ 		fsl,pins = <
+ 			MX7D_PAD_SD1_CMD__SD1_CMD		0x59
+-- 
+2.20.1
+

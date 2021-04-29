@@ -1,0 +1,53 @@
+From a6076976a26e075e77880b5d7353483cdea94159 Mon Sep 17 00:00:00 2001
+From: Ilya Ledvich <ilya@compulab.co.il>
+Date: Thu, 4 Jun 2020 14:59:36 +0300
+Subject: [PATCH 25/38] PCIe: imx6: release phy reset before toggling reset
+ gpio
+
+Perform release release of PCIe PHY before device reset by
+toggling reset gpio.
+
+Signed-off-by: Ilya Ledvich <ilya@compulab.co.il>
+---
+ drivers/pci/controller/dwc/pci-imx6.c | 18 +++++++++---------
+ 1 file changed, 9 insertions(+), 9 deletions(-)
+
+diff --git a/drivers/pci/controller/dwc/pci-imx6.c b/drivers/pci/controller/dwc/pci-imx6.c
+index 5abe513787b2..eb21b5cbfab2 100644
+--- a/drivers/pci/controller/dwc/pci-imx6.c
++++ b/drivers/pci/controller/dwc/pci-imx6.c
+@@ -1182,15 +1182,6 @@ static void imx6_pcie_deassert_core_reset(struct imx6_pcie *imx6_pcie)
+ 		break;
+ 	}
+ 
+-	/* Some boards don't have PCIe reset GPIO. */
+-	if (gpio_is_valid(imx6_pcie->reset_gpio)) {
+-		gpio_set_value_cansleep(imx6_pcie->reset_gpio,
+-					imx6_pcie->gpio_active_high);
+-		msleep(20);
+-		gpio_set_value_cansleep(imx6_pcie->reset_gpio,
+-					!imx6_pcie->gpio_active_high);
+-	}
+-
+ 	switch (imx6_pcie->drvdata->variant) {
+ 	case IMX8QM:
+ 	case IMX8QM_EP:
+@@ -1347,6 +1338,15 @@ static void imx6_pcie_deassert_core_reset(struct imx6_pcie *imx6_pcie)
+ 		break;
+ 	}
+ 
++	/* Some boards don't have PCIe reset GPIO. */
++	if (gpio_is_valid(imx6_pcie->reset_gpio)) {
++		gpio_set_value_cansleep(imx6_pcie->reset_gpio,
++					imx6_pcie->gpio_active_high);
++		msleep(100);
++		gpio_set_value_cansleep(imx6_pcie->reset_gpio,
++					!imx6_pcie->gpio_active_high);
++	}
++
+ 	return;
+ }
+ 
+-- 
+2.20.1
+

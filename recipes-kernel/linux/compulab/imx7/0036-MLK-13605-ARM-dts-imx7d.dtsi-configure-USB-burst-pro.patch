@@ -1,0 +1,45 @@
+From a26574fe2f21cab2747707301f2cb7b3f2a263ee Mon Sep 17 00:00:00 2001
+From: Peter Chen <peter.chen@nxp.com>
+Date: Wed, 14 Dec 2016 10:25:54 +0800
+Subject: [PATCH 36/38] MLK-13605 ARM: dts: imx7d.dtsi: configure USB burst
+ properly
+
+After testing, it can give the best performance.
+
+Signed-off-by: Peter Chen <peter.chen@nxp.com>
+---
+ arch/arm/boot/dts/imx7d.dtsi | 3 +++
+ arch/arm/boot/dts/imx7s.dtsi | 3 +++
+ 2 files changed, 6 insertions(+)
+
+diff --git a/arch/arm/boot/dts/imx7d.dtsi b/arch/arm/boot/dts/imx7d.dtsi
+index bafac01e503f..10f727d9351d 100644
+--- a/arch/arm/boot/dts/imx7d.dtsi
++++ b/arch/arm/boot/dts/imx7d.dtsi
+@@ -318,6 +318,9 @@
+ 		fsl,usbphy = <&usbphynop2>;
+ 		fsl,usbmisc = <&usbmisc2 0>;
+ 		phy-clkgate-delay-us = <400>;
++		ahb-burst-config = <0x0>;
++		tx-burst-size-dword = <0x10>;
++		rx-burst-size-dword = <0x10>;
+ 		status = "disabled";
+ 	};
+ 
+diff --git a/arch/arm/boot/dts/imx7s.dtsi b/arch/arm/boot/dts/imx7s.dtsi
+index 4629d7493f35..fa752b1794dd 100644
+--- a/arch/arm/boot/dts/imx7s.dtsi
++++ b/arch/arm/boot/dts/imx7s.dtsi
+@@ -1143,6 +1143,9 @@
+ 				fsl,usbphy = <&usbphynop1>;
+ 				fsl,usbmisc = <&usbmisc1 0>;
+ 				phy-clkgate-delay-us = <400>;
++				ahb-burst-config = <0x0>;
++				tx-burst-size-dword = <0x10>;
++				rx-burst-size-dword = <0x10>;
+ 				status = "disabled";
+ 			};
+ 
+-- 
+2.20.1
+

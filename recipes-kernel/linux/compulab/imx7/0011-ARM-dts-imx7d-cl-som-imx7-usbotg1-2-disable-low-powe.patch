@@ -1,0 +1,32 @@
+From 498c3064b7631cb4353c3c533fb9dbb0a2f941b4 Mon Sep 17 00:00:00 2001
+From: Ilya Ledvich <ilya@compulab.co.il>
+Date: Thu, 22 Apr 2021 17:27:08 +0300
+Subject: [PATCH 11/38] ARM: dts: imx7d: cl-som-imx7: usbotg1,2: disable low
+ power mode
+
+Signed-off-by: Ilya Ledvich <ilya@compulab.co.il>
+---
+ arch/arm/boot/dts/imx7d-cl-som-imx7.dts | 2 ++
+ 1 file changed, 2 insertions(+)
+
+diff --git a/arch/arm/boot/dts/imx7d-cl-som-imx7.dts b/arch/arm/boot/dts/imx7d-cl-som-imx7.dts
+index 0557012309cb..b588c2bf4586 100644
+--- a/arch/arm/boot/dts/imx7d-cl-som-imx7.dts
++++ b/arch/arm/boot/dts/imx7d-cl-som-imx7.dts
+@@ -310,11 +310,13 @@
+ 	pinctrl-names = "default";
+ 	pinctrl-0 = <&pinctrl_usbotg1>;
+ 	vbus-supply = <&reg_usb_otg1_vbus>;
++	ci-disable-lpm;
+ 	status = "okay";
+ };
+ 
+ &usbotg2 {
+ 	dr_mode = "host";
++	ci-disable-lpm;
+ 	status = "okay";
+ };
+ 
+-- 
+2.20.1
+
