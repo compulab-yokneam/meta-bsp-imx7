@@ -6,3 +6,7 @@ do_install_append () {
         sed -i '/ctrl_interface=/ a p2p_disabled=1' ${D}${sysconfdir}/wpa_supplicant.conf
     fi
 }
+
+do_configure_append () {
+     sed -i "$ a CONFIG_FILS=y" wpa_supplicant/.config
+}
