@@ -1,5 +1,7 @@
 # Quick Start Guide
 
+NOTE: This is a development branch is not released/supported officially by CompuLab yet.
+
 # Supported CompuLab Machines
 * `cl-som-imx7`
 
