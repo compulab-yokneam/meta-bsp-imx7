@@ -46,3 +46,16 @@ Make use ot the development host device name instead.
 [source,console]
 cd tmp/deploy/images/${MACHINE}
 sudo bmaptool copy imx-image-full-cl-som-imx7.wic.bz2  --bmap imx-image-full-cl-som-imx7.wic.bmap /dev/sdi
+
+# Precompiled images:
+[cols="2", options="header"]
+|===
+|image type
+|link
+
+|core
+|https://drive.google.com/file/d/1tKg-D33kUpg0_8VDbiFLz86HUAX-JVsI/view?usp=sharing[core-image-minimal-cl-som-imx7-20210811064549.rootfs.wic.bz2]
+
+|imx-image-full
+|https://drive.google.com/file/d/1FTRlWW8yrsh8r7hNJfYadKZAWLKGbosa/view?usp=sharing[imx-image-full-cl-som-imx7-20211011093112.rootfs.wic.bz2]
+|===
