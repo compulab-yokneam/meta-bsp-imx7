@@ -47,6 +47,19 @@ bitbake -k fsl-image-qt5-validation-imx
 MACHINE=${COMPULAB_MACHINE} DISTRO=fsl-imx-x11 source sources/meta-bsp-imx7/tools/setup-env -b build-x11-imx7
 bitbake -k compulab-image-xfce
 
+# Build U-boot only:
+* Issue the configuration script with the minimal configuration. The configuration script will ask about U-Boot version (2017.07|2018.11), please choose the one required:
+[source,console]
+MACHINE=${COMPULAB_MACHINE} DISTRO=fsl-imx-fb source sources/meta-bsp-imx7/tools/setup-env -b build-fb-imx7
+
+* Issue the U-boot build:
+[source,console]
+bitbake -k u-boot-compulab
+
+* Result is at:
+[source,console]
+ls ${BUILDDIR}/tmp/deploy/images/${MACHINE}/u-boot.imx
+
 # Build results
 * The results of the build can be found at `${BUILDDIR}/tmp/deploy/images/${COMPULAB_MACHINE}`
 [source,console]
