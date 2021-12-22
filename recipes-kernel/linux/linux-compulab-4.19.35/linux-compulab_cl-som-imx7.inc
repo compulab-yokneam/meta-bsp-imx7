@@ -38,6 +38,7 @@ SRC_URI_append_cl-som-imx7 = " \
 	file://0037-rtc-em3027-correct-month-value.patch \
 	file://0038-mtd-tests-nandecctest-add-dummy-module-parameter.patch \
 	file://0039-ARM-configs-add-defconfig-for-compulab-imx7-based-de.patch \
+	file://0040-compulab-imx7-Add-peripheral-device-support-on-sbc-i.patch \
 	file://defconfig \
 "
 
