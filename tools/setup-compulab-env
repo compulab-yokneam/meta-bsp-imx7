@@ -14,7 +14,7 @@ git -C ${dir} checkout ${branch}
 
 get_meta_compulab() {
 dir="../sources/meta-compulab"
-branch="dfbae58a70d41659bce61f7e90e528fa2ed772be"
+branch="devel"
 url="https://github.com/compulab-yokneam/meta-compulab"
 get_meta ${url} ${branch} ${dir}
 }
