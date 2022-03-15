@@ -2,4 +2,4 @@
 
 This meta-layer is a sub-layer for https://github.com/compulab-yokneam/compulab-fslc-bsp/tree/devel[compulab-fslc-bsp]
 
-Don try using it as a standalong layer.
+Don try using it as a standalone layer.
