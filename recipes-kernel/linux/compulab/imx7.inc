@@ -37,5 +37,6 @@ SRC_URI_append = " \
 	file://0036-MLK-13605-ARM-dts-imx7d.dtsi-configure-USB-burst-pro.patch \
 	file://0037-mtd-tests-nandecctest-add-dummy-module-parameter.patch \
 	file://0038-ARM-configs-add-defconfig-for-compulab-imx7-based-de.patch \
+	file://0039-cl-som-imx7-defconfig-Disable-CONFIG_FW_LOADER_USER_.patch \
 	file://defconfig \
 "
