@@ -38,5 +38,6 @@ SRC_URI_append = " \
 	file://0037-mtd-tests-nandecctest-add-dummy-module-parameter.patch \
 	file://0038-ARM-configs-add-defconfig-for-compulab-imx7-based-de.patch \
 	file://0039-cl-som-imx7-defconfig-Disable-CONFIG_FW_LOADER_USER_.patch \
+	file://0040-cl-som-imx7-dts-phy-Fix-for-rev-1.4.patch \
 	file://defconfig \
 "
