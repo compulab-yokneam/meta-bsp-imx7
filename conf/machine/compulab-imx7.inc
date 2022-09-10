@@ -20,14 +20,7 @@ KERNEL_DEVICETREE += " \
 "
 
 IMAGE_BOOT_FILES = "zImage "
-IMAGE_BOOT_FILES += " \
-	imx7d-cl-som-imx7.dtb \
-	imx7d-sbc-imx7.dtb \
-	imx7d-sbc-imx7-m4.dtb \
-	imx7d-sbc-iot-imx7.dtb \
-	imx7d-sbc-iot-imx7-rs485-hdx.dtb \
-	imx7d-sbc-iot-imx7-can.dtb \
-"
+IMAGE_BOOT_FILES += " ${KERNEL_DEVICETREE} "
 
 MACHINE_FEATURES += " alsa bluetooth serial usbhost wifi pci "
 
