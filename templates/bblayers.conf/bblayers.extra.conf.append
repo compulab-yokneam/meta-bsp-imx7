@@ -6,3 +6,8 @@ BBLAYERS += " \
 	${BSPDIR}/sources/meta-compulab-bsp/meta-bsp \
 	${BSPDIR}/sources/meta-compulab-bsp/meta-devtool \
 "
+
+BBLAYERS += " \
+    ${BSPDIR}/sources/meta-openembedded/meta-xfce \
+    ${BSPDIR}/sources/meta-compulab-bsp/meta-xfce \
+"
