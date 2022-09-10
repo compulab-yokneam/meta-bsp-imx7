@@ -37,5 +37,11 @@ SRC_URI_append = " \
 	file://0036-MLK-13605-ARM-dts-imx7d.dtsi-configure-USB-burst-pro.patch \
 	file://0037-mtd-tests-nandecctest-add-dummy-module-parameter.patch \
 	file://0038-ARM-configs-add-defconfig-for-compulab-imx7-based-de.patch \
+	file://0039-cl-som-imx7-defconfig-Disable-CONFIG_FW_LOADER_USER_.patch \
+	file://0040-cl-som-imx7-dts-phy-Fix-for-rev-1.4.patch \
+	file://0041-video-mipi-panel-ti-sn65dsi83-add-MIPI-LVDS-bridge-d.patch \
+	file://0042-compulab_imx7-defconfig-Enable-FB_MXC_SN65DSI8X.patch \
+	file://0043-ARM-dts-imx7d-sbc-iot-imx7-add-LVDS-panel-support.patch \
+	file://0044-mipi_dsi-platform-Merge-the-4.14.98-code.patch \
 	file://defconfig \
 "
