@@ -42,6 +42,7 @@ bitbake -k imx-image-full
 # Create a bootable sd card
 NOTE: In this chapter the target block device `/dev/sdi` is just an example.
 Make use ot the development host device name instead.
+
 ## Using `bmaptool`
 [source,console]
 cd tmp/deploy/images/${MACHINE}
