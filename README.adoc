@@ -1,5 +1,5 @@
 # CompuLab iMX7 Dunfell sub-layer
 
-This meta-layer is a sub-layer for https://github.com/compulab-yokneam/compulab-fslc-bsp/tree/devel[compulab-fslc-bsp]
+This meta-layer is a sub-layer for https://github.com/compulab-yokneam/compulab-fslc-bsp/tree/dunfell[compulab-fslc-bsp]
 
 Don try using it as a standalone layer.
