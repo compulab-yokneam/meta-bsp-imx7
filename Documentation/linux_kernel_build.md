@@ -25,7 +25,7 @@ export PATCHES=$(pwd)/meta-bsp-imx7/recipes-kernel/linux/linux-compulab-4.14.98/
 
 # CompuLab Linux Kernel setup
 <pre>
-git clone https://source.codeaurora.org/external/imx/linux-imx.git
+git clone https://github.com/nxp-imx/linux-imx.git
 git -C linux-imx checkout -b linux-compulab rel_imx_4.14.98_2.0.0_ga
 git -C linux-imx am ${PATCHES}/*.patch
 </pre>

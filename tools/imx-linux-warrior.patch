@@ -1,0 +1,13 @@
+diff --git a/imx-4.19.35-1.1.0.xml b/imx-4.19.35-1.1.0.xml
+index f1c378f..fc9ca30 100644
+--- a/.repo/manifests/imx-4.19.35-1.1.0.xml
++++ b/.repo/manifests/imx-4.19.35-1.1.0.xml
+@@ -10,7 +10,7 @@
+   <remote fetch="https://github.com/meta-qt5"  name="QT5"/>
+   <remote fetch="https://github.com/TimesysGit"  name="Timesys"/>
+   <remote fetch="https://github.com/meta-rust"  name="rust"/>
+-  <remote fetch="https://source.codeaurora.org/external/imx" name="CAF"/>
++  <remote fetch="https://github.com/nxp-imx" name="CAF"/>
+ 
+   <project remote="yocto" revision="6d2e12e79211b31cdf5ea824fb9a8be54ba9a9eb" name="poky" path="sources/poky"/>
+   <project remote="yocto" revision="2142f7ded1b3115ccc21f7575fd83e2376247193" name="meta-freescale" path="sources/meta-freescale"/>

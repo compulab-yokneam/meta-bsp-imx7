@@ -3,22 +3,25 @@
 # Supported CompuLab Machines
 * `cl-som-imx7`
 
-# Prepare NXP BSP
+# Setup Yocto environment
+* WorkDir:
 [source,console]
-repo init -u git://source.codeaurora.org/external/imx/imx-manifest.git -b imx-linux-warrior -m imx-4.19.35-1.1.0.xml
-repo sync
+mkdir compulab-nxp-bsp-imx7 && cd compulab-nxp-bsp-imx7
 
-# Download CompuLab meta layer
-[source,console]
-git clone -b warrior https://github.com/compulab-yokneam/meta-bsp-imx7.git sources/meta-bsp-imx7/
+* Set a CompuLab machine:
+|=======================
+|Machine|Command Line
+|cl-som-imx7|```export COMPULAB_MACHINE=cl-som-imx7```
+|=======================
 
-# Set COMPULAB_MACHINE environment variable
-* `cl-som-imx7`
+* Download and run main script:
 [source,console]
-COMPULAB_MACHINE=cl-som-imx7
+wget https://raw.githubusercontent.com/compulab-yokneam/meta-bsp-imx7/warrior/tools/runme.sh
+chmod +x ./runme.sh
+./runme.sh
 
 # Build Images
-Refer to the https://source.codeaurora.org/external/imx/meta-fsl-bsp-release/tree/imx/README?h=warrior-4.19.35-1.1.0[`NXP Readme`] for details about how to select a correct `backend` & `distro`.
+Refer to the https://github.com/nxp-imx/meta-fsl-bsp-release/blob/warrior-4.19.35-1.1.0/imx/README[`NXP Readme`] for details about how to select a correct `backend` & `distro`.
 
 * Minimal core image
 [source,console]

@@ -74,6 +74,10 @@ cat << eof | tee -a ${LOCAL_CONF} > /dev/null
 # These package cause a root image build conflict with gui images
 # CORE_IMAGE_EXTRA_INSTALL += "${CORE_IMAGE_EXTRA_INSTALL}"
 eof
+cat << eof | tee -a ${LOCAL_CONF} > /dev/null
+# Fix linux-firmware recipe issue:
+BBMASK += " meta-bsp/recipes-bsp/linux-firmware/linux-firmware_%.bbappend "
+eof
 }
 
 CWD=$(pwd)
