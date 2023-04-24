@@ -1,0 +1,29 @@
+From 99843ef6f4b5c08b690410cd9e127852750d51dd Mon Sep 17 00:00:00 2001
+From: Valentin Raevsky <valentin@compulab.co.il>
+Date: Wed, 22 Feb 2023 11:50:50 +0200
+Subject: [PATCH] cl-som-imx7: dts: phy: Provide backward compatibility
+
+Signed-off-by: Valentin Raevsky <valentin@compulab.co.il>
+---
+ arch/arm/boot/dts/imx7d-cl-som-imx7.dts | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/arch/arm/boot/dts/imx7d-cl-som-imx7.dts b/arch/arm/boot/dts/imx7d-cl-som-imx7.dts
+index 7ef96478bfe3..5d29c2c2c9a1 100644
+--- a/arch/arm/boot/dts/imx7d-cl-som-imx7.dts
++++ b/arch/arm/boot/dts/imx7d-cl-som-imx7.dts
+@@ -195,12 +195,12 @@
+ 
+ 		ethphy0: ethernet-phy@0 {
+ 			compatible = "ethernet-phy-ieee802.3-c22";
+-			reg = <4>;
++			reg = <0>;
+ 		};
+ 
+ 		ethphy1: ethernet-phy@1 {
+ 			compatible = "ethernet-phy-ieee802.3-c22";
+-			reg = <5>;
++			reg = <1>;
+ 		};
+ 	};
+ };
