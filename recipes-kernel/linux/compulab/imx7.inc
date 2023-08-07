@@ -1,4 +1,4 @@
-SRC_URI_append = " \
+SRC_URI:append = " \
 	file://0001-ARM-dts-imx7d-cl-som-imx7-fix-uart1-parent-clock.patch \
 	file://0002-ARM-dts-imx7d-cl-som-imx7-fix-pfuze3000-PMIC-regulat.patch \
 	file://0003-ARM-dts-imx7d-cl-som-imx7-fix-i2c2-configuration.patch \

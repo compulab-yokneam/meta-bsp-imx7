@@ -2,7 +2,7 @@ SOC_FAMILY = "mx7:mx7d"
 MACHINEOVERRIDES =. "mx7:mx7d:"
 
 require conf/machine/include/imx-base.inc
-require conf/machine/include/tune-cortexa7.inc
+require conf/machine/include/arm/armv7a/tune-cortexa7.inc
 
 IMX_DEFAULT_BSP = "nxp"
 
@@ -32,7 +32,7 @@ MACHINE_FIRMWARE = "linux-firmware-wl18xx \
 # Set Serial console
 SERIAL_CONSOLE = "115200 ttymxc0"
 
-IMAGE_INSTALL_append = " \
+IMAGE_INSTALL:append = " \
 	kernel-image \
 	kernel-modules \
 	kernel-devicetree \
