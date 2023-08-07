@@ -46,7 +46,7 @@ Make use ot the development host device name instead.
 ## Using `bmaptool`
 [source,console]
 cd tmp/deploy/images/${MACHINE}
-sudo bmaptool copy imx-image-full-cl-som-imx7.wic.bz2  --bmap imx-image-full-cl-som-imx7.wic.bmap /dev/sdi
+zstdcat imx-image-full-cl-som-imx7.rootfs.wic.zst | sudo dd of=/dev/sdi bs=1M status=progress
 
 # Precompiled images:
 [cols="2", options="header"]
@@ -55,8 +55,8 @@ sudo bmaptool copy imx-image-full-cl-som-imx7.wic.bz2  --bmap imx-image-full-cl-
 |link
 
 |core
-|https://drive.google.com/file/d/1tKg-D33kUpg0_8VDbiFLz86HUAX-JVsI/view?usp=sharing[core-image-minimal-cl-som-imx7-20210811064549.rootfs.wic.bz2]
+|https://drive.google.com/file/d/1g6rKRGZvLirLtVtJkxKprKyZAtpD9AxV/view?usp=drive_link[core-image-minimal-cl-som-imx7-20230807145731.rootfs.wic.zst]
 
 |imx-image-full
-|https://drive.google.com/file/d/1FTRlWW8yrsh8r7hNJfYadKZAWLKGbosa/view?usp=sharing[imx-image-full-cl-som-imx7-20211011093112.rootfs.wic.bz2]
+|https://drive.google.com/file/d/1r5xbiBhpSMShP2teioiRL5PJAdv7Q2wF/view?usp=drive_link[imx-image-full-cl-som-imx7-20230807125325.rootfs.wic.zst]
 |===
