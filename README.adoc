@@ -40,10 +40,9 @@ source sources/meta-bsp-imx7/tools/setup-env -b build-${MACHINE}
 bitbake -k imx-image-full
 
 # Create a bootable sd card
-NOTE: In this chapter the target block device `/dev/sdi` is just an example.
-Make use ot the development host device name instead.
+NOTE: The block device `/dev/sdi` is just an example.
+Make use of the development host device name instead.
 
-## Using `bmaptool`
 [source,console]
 cd tmp/deploy/images/${MACHINE}
 zstdcat imx-image-full-cl-som-imx7.rootfs.wic.zst | sudo dd of=/dev/sdi bs=1M status=progress
