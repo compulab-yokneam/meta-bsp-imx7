@@ -2,60 +2,27 @@
 
 NOTE: This is a development branch is not released/supported officially by CompuLab yet.
 
-# Supported CompuLab Machines
+## Supported CompuLab Machines
 * `cl-som-imx7`
 
-# Setup Yocto environment
-* WorkDir
+## Setup Yocto environment
+Issue the command and follow the on-screen instructions:
 [source,console]
-mkdir compulab-bsp && cd compulab-bsp
-* Set a CompuLab machine:
-[source,console]
-export MACHINE=cl-som-imx7
+bash <(curl -L https://raw.githubusercontent.com/compulab-yokneam/meta-bsp-imx7/kirkstone/tools/run.me)
 
-# Initialize repo manifests
-* NXP
-[source,console]
-repo init -u https://github.com/nxp-imx/imx-manifest.git -b imx-linux-kirkstone -m imx-5.15.71-2.2.0.xml
-repo sync
-* CompuLab
-[source,console]
-mkdir -p .repo/local_manifests
-cd .repo/local_manifests
-wget https://raw.githubusercontent.com/compulab-yokneam/meta-bsp-imx7/kirkstone/scripts/meta-bsp-imx7.xml
-cd -
-* Sync Them all
-[source,console]
-repo sync
-cd .repo/local_manifests
-ln -sf ../../sources/meta-bsp-imx7/scripts/meta-bsp-imx7.xml .
-cd -
-
-# Setup environment and build image
-* Initialize the build environment:
-[source,console]
-source sources/meta-bsp-imx7/tools/setup-env -b build-${MACHINE}
-* Building the image:
+At the end, the scrip prints out a message:
+```
+  Issue this command to get into the Yocto build environment:
+  cd /path/to/compulab-bsp; source setup-environment build-cl-som-imx7
+```
+## Building the image:
 [source,console]
 bitbake -k imx-image-full
 
-# Create a bootable sd card
+## Create a bootable sd card
 NOTE: The block device `/dev/sdi` is just an example.
 Make use of the development host device name instead.
 
 [source,console]
-cd tmp/deploy/images/${MACHINE}
+cd tmp/deploy/images/cl-som-imx7
 zstdcat imx-image-full-cl-som-imx7.rootfs.wic.zst | sudo dd of=/dev/sdi bs=1M status=progress
-
-# Precompiled images:
-[cols="2", options="header"]
-|===
-|image type
-|link
-
-|core
-|https://drive.google.com/file/d/1g6rKRGZvLirLtVtJkxKprKyZAtpD9AxV/view?usp=drive_link[core-image-minimal-cl-som-imx7-20230807145731.rootfs.wic.zst]
-
-|imx-image-full
-|https://drive.google.com/file/d/1r5xbiBhpSMShP2teioiRL5PJAdv7Q2wF/view?usp=drive_link[imx-image-full-cl-som-imx7-20230807125325.rootfs.wic.zst]
-|===
