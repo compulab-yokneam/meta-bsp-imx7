@@ -1,0 +1,26 @@
+#!/bin/bash -e
+
+export COMPULAB_MACHINE=cl-som-imx7
+export MACHINE=${COMPULAB_MACHINE}
+export BSP_DIR=${BSP_DIR:-$(pwd)/compulab-bsp}
+mkdir ${BSP_DIR} -p
+pushd ${BSP_DIR}
+BSP_DIR=$(pwd)
+
+if [ ! -d ${BSP_DIR}/.repo ];then
+    repo init -u https://github.com/nxp-imx/imx-manifest.git -b imx-linux-kirkstone -m imx-5.15.71-2.2.0.xml
+    wget --directory-prefix .repo/local_manifests  https://raw.githubusercontent.com/compulab-yokneam/meta-bsp-imx7/kirkstone/scripts/meta-bsp-imx7.xml
+    repo sync
+fi
+
+if [ ! -d ${BSP_DIR}/build-${COMPULAB_MACHINE} ];then
+cat << eof
+    Issuing: MACHINE=${COMPULAB_MACHINE} souce sources/meta-bsp-imx7/tools/setup-env -b build-${COMPULAB_MACHINE}
+eof
+MACHINE=${COMPULAB_MACHINE} source sources/meta-bsp-imx7/tools/setup-env -b build-${COMPULAB_MACHINE}
+fi
+
+cat << eof
+    Issue this command to get into the Yocto build environment:
+    cd ${BSP_DIR}; source setup-environment build-${COMPULAB_MACHINE}
+eof
