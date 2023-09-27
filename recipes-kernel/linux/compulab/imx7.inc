@@ -43,5 +43,17 @@ SRC_URI:append = " \
 	file://0042-compulab_imx7-defconfig-Enable-FB_MXC_SN65DSI8X.patch \
 	file://0043-ARM-dts-imx7d-sbc-iot-imx7-add-LVDS-panel-support.patch \
 	file://0044-mipi_dsi-platform-Merge-the-4.14.98-code.patch \
+	file://0045-compulab_imx7_defconfig-Add-sdma-imx7d.bin.patch \
 	file://defconfig \
 "
+
+SRC_URI:append = " https://github.com/compulab-yokneam/bin/raw/linux-firmware/imx-sdma-20230404.tar.bz2;name=imx-sdma-firmware "
+SRC_URI[imx-sdma-firmware.md5sum] = "a1169448bf2f020a3f48f51c4961022a"
+SRC_URI[imx-sdma-firmware.sha256sum] = "004ad1f9cf5b1176e71765794a5bfdcffdf44b9a5c1545188a171554bf4439a1"
+
+do_configure:append() {
+    if [ ! -d ${S}/lib/firmware/imx ];then
+        mkdir -p ${S}/lib/firmware
+        cp -a ${WORKDIR}/imx ${S}/lib/firmware
+    fi
+}

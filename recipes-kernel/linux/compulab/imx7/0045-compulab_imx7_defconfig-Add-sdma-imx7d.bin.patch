@@ -1,0 +1,23 @@
+From 171d044d8a86d991e5463ff05710b51190f1e500 Mon Sep 17 00:00:00 2001
+From: Valentin Raevsky <valentin@compulab.co.il>
+Date: Wed, 27 Sep 2023 14:49:47 +0000
+Subject: [PATCH 45/45] compulab_imx7_defconfig: Add sdma-imx7d.bin
+
+Signed-off-by: Valentin Raevsky <valentin@compulab.co.il>
+---
+ arch/arm/configs/compulab_imx7_defconfig | 2 ++
+ 1 file changed, 2 insertions(+)
+
+diff --git a/arch/arm/configs/compulab_imx7_defconfig b/arch/arm/configs/compulab_imx7_defconfig
+index b71b1429a6cf..c10aa0e5d059 100644
+--- a/arch/arm/configs/compulab_imx7_defconfig
++++ b/arch/arm/configs/compulab_imx7_defconfig
+@@ -949,3 +949,5 @@ CONFIG_DEBUG_FS=y
+ # CONFIG_SCHED_DEBUG is not set
+ # CONFIG_DEBUG_PREEMPT is not set
+ # CONFIG_FTRACE is not set
++CONFIG_EXTRA_FIRMWARE="imx/sdma/sdma-imx7d.bin"
++CONFIG_EXTRA_FIRMWARE_DIR="lib/firmware"
+-- 
+2.34.1
+
