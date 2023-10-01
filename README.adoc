@@ -1,6 +1,6 @@
 # Quick Start Guide
 
-NOTE: This is a development branch is not released/supported officially by CompuLab yet.
+NOTE: This development branch has not yet been released/supported officially by CompuLab.
 
 ## Supported CompuLab Machines
 * `cl-som-imx7`
@@ -10,18 +10,18 @@ Issue the command and follow the on-screen instructions:
 [source,console]
 bash <(curl -L https://raw.githubusercontent.com/compulab-yokneam/meta-bsp-imx7/kirkstone/tools/run.me)
 
-At the end, the scrip prints out a message:
+At the end, the script prints out a message:
 ```
   Issue this command to get into the Yocto build environment:
   cd /path/to/compulab-bsp; source setup-environment build-cl-som-imx7
 ```
-## Building the image:
+## Building the image
 [source,console]
 bitbake -k imx-image-full
 
-## Create a bootable sd card
+## Create a bootable SD card
 NOTE: The block device `/dev/sdi` is just an example.
-Make use of the development host device name instead.
+Use of the development host device name instead.
 
 [source,console]
 cd tmp/deploy/images/cl-som-imx7
