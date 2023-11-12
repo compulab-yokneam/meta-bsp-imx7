@@ -1,0 +1,31 @@
+From 557d5c75b550eee81a4a8f7045fd2ade22bdb78c Mon Sep 17 00:00:00 2001
+From: Valentin Raevsky <valentin@compulab.co.il>
+Date: Sun, 12 Nov 2023 21:09:50 +0000
+Subject: [PATCH] ARM: dts: imx7d: cl-som-imx7: usbh: Disable lpm
+
+Signed-off-by: Valentin Raevsky <valentin@compulab.co.il>
+---
+ arch/arm/boot/dts/imx7d-cl-som-imx7.dts | 2 ++
+ 1 file changed, 2 insertions(+)
+
+diff --git a/arch/arm/boot/dts/imx7d-cl-som-imx7.dts b/arch/arm/boot/dts/imx7d-cl-som-imx7.dts
+index 277a35cc4f89..7a0d1825c954 100644
+--- a/arch/arm/boot/dts/imx7d-cl-som-imx7.dts
++++ b/arch/arm/boot/dts/imx7d-cl-som-imx7.dts
+@@ -431,11 +431,13 @@
+ 	pinctrl-names = "default";
+ 	pinctrl-0 = <&pinctrl_usbotg1>;
+ 	vbus-supply = <&reg_usb_otg1_vbus>;
++	ci-disable-lpm;
+ 	status = "okay";
+ };
+ 
+ &usbotg2 {
+ 	dr_mode = "host";
++	ci-disable-lpm;
+ 	status = "okay";
+ };
+ 
+-- 
+2.34.1
+

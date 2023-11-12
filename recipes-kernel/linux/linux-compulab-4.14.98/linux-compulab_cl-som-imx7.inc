@@ -54,6 +54,7 @@ SRC_URI_append_cl-som-imx7 += "\
     file://0053-ARM-dts-imx7d-sbc-imx7-enable-adc1.patch \
     file://0054-ARM-dts-imx7d-cl-som-imx7-rework-USB-hub-reset.patch \
     file://0055-ARM-dts-imx7d-sbc-imx7-sbc-iot-imx7-fix-pinctrl-0-li.patch \
+    file://0056-ARM-dts-imx7d-cl-som-imx7-usbh-Disable-lpm.patch \
     file://defconfig \
 "
 
