@@ -1,5 +1,5 @@
 SOC_FAMILY = "mx7:mx7d"
-MACHINEOVERRIDES =. "mx7:mx7d:"
+MACHINEOVERRIDES =. "mx7:mx7d:compulab-mx7:"
 
 require conf/machine/include/imx-base.inc
 require conf/machine/include/arm/armv7a/tune-cortexa7.inc
