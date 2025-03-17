@@ -1,0 +1,25 @@
+From 942cae09b1997de55fa0f38ae1643499f55f7cd0 Mon Sep 17 00:00:00 2001
+From: Valentin Raevsky <valentin@compulab.co.il>
+Date: Mon, 17 Mar 2025 16:00:59 +0200
+Subject: [PATCH] compulab_imx7_defconfig: Enable RTL8125
+
+Signed-off-by: Valentin Raevsky <valentin@compulab.co.il>
+---
+ arch/arm/configs/compulab_imx7_defconfig | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/arch/arm/configs/compulab_imx7_defconfig b/arch/arm/configs/compulab_imx7_defconfig
+index c10aa0e5d059..cd37b661eae4 100644
+--- a/arch/arm/configs/compulab_imx7_defconfig
++++ b/arch/arm/configs/compulab_imx7_defconfig
+@@ -392,6 +392,7 @@ CONFIG_IGB=m
+ # CONFIG_NET_VENDOR_MICREL is not set
+ # CONFIG_NET_VENDOR_MICROCHIP is not set
+ # CONFIG_NET_VENDOR_NATSEMI is not set
++CONFIG_R8169=m
+ # CONFIG_NET_VENDOR_SEEQ is not set
+ CONFIG_SMC91X=y
+ CONFIG_SMC911X=y
+-- 
+2.34.1
+

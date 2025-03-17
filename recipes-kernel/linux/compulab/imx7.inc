@@ -44,6 +44,7 @@ SRC_URI:append = " \
 	file://0043-ARM-dts-imx7d-sbc-iot-imx7-add-LVDS-panel-support.patch \
 	file://0044-mipi_dsi-platform-Merge-the-4.14.98-code.patch \
 	file://0045-compulab_imx7_defconfig-Add-sdma-imx7d.bin.patch \
+	file://0046-compulab_imx7_defconfig-Enable-RTL8125.patch \
 	file://defconfig \
 "
 
