@@ -1,0 +1,18 @@
+Subject: [PATCH] mmap: include stdint.h for uint16_t
+
+DynamicMMap::WriteString uses uint16_t. Include its defining header
+directly instead of relying on transitive includes from the C++ library,
+which no longer provide it with newer host compilers.
+
+Upstream-Status: Pending
+
+--- a/apt-pkg/contrib/mmap.cc
++++ b/apt-pkg/contrib/mmap.cc
+@@ -26,6 +26,7 @@
+ #include <cstring>
+ #include <string>
+ #include <errno.h>
++#include <stdint.h>
+ #include <stdlib.h>
+ #include <unistd.h>
+ 
